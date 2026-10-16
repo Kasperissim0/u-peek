@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CAMPUSES = [
     {
         "id": "w29",
-        "name": "W29: Währinger Straße 29 (Computer Science & Media)",
+        "name": "Währinger Straße 29 (Computer Science & Media)",
         "address": "Währinger Straße 29, 1090 Wien",
         "query_prefix": "Währinger Straße 29",
         "spl_codes": "spl5,spl22",
@@ -45,7 +45,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "omp",
-        "name": "OMP: Oskar-Morgenstern-Platz 1 (Mathematics & Economics)",
+        "name": "Oskar-Morgenstern-Platz 1 (Mathematics & Economics)",
         "address": "Oskar-Morgenstern-Platz 1, 1090 Wien",
         "query_prefix": "Oskar-Morgenstern-Platz 1",
         "spl_codes": "spl25,spl4",
@@ -69,7 +69,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "ubb",
-        "name": "UBB: Djerassiplatz 1 (Life Sciences & Biology)",
+        "name": "Djerassiplatz 1 (Life Sciences & Biology)",
         "address": "Djerassiplatz 1, 1030 Wien",
         "query_prefix": "Djerassiplatz 1",
         "spl_codes": "spl30,spl31",
@@ -85,7 +85,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "chemie",
-        "name": "Chemie: Währinger Straße 38-42 (Chemistry)",
+        "name": "Währinger Straße 38-42 (Chemistry)",
         "address": "Währinger Straße 38-42, 1090 Wien",
         "query_prefix": "Währinger Straße 38",
         "spl_codes": "spl27",
@@ -93,7 +93,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "physik_boltzmann",
-        "name": "Physik: Boltzmanngasse 5 (Physics)",
+        "name": "Boltzmanngasse 5 (Physics)",
         "address": "Boltzmanngasse 5, 1090 Wien",
         "query_prefix": "Boltzmanngasse 5",
         "spl_codes": "spl26",
@@ -101,7 +101,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "psychologie",
-        "name": "Psychologie: Kolingasse 14-16 (Psychology)",
+        "name": "Kolingasse 14-16 (Psychology)",
         "address": "Kolingasse 14-16, 1090 Wien",
         "query_prefix": "Kolingasse 14-16",
         "spl_codes": "spl32",
@@ -109,7 +109,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "sport",
-        "name": "USZ: Auf der Schmelz 6 (Sport Science)",
+        "name": "Auf der Schmelz 6 (Sport Science)",
         "address": "Auf der Schmelz 6, 1150 Wien",
         "query_prefix": "Auf der Schmelz 6",
         "spl_codes": "spl33",
@@ -117,7 +117,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "theologie",
-        "name": "Theologie: Schenkenstraße 8-10 (Theology)",
+        "name": "Schenkenstraße 8-10 (Theology)",
         "address": "Schenkenstraße 8-10, 1010 Wien",
         "query_prefix": "Schenkenstraße 8-10",
         "spl_codes": "spl1,spl2",
