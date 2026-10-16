@@ -4,6 +4,7 @@ Parses RFC 5545 iCalendar events and detects room collision/occupancy
 for any given datetime in Vienna time.
 """
 import re
+import urllib.parse
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
 
@@ -13,6 +14,28 @@ try:
 except ImportError:
     import pytz
     VIENNA_TZ = pytz.timezone("Europe/Vienna")
+
+
+def build_ufind_highlight_url(url: str, location: str, event_dt: Optional[datetime] = None) -> str:
+    """
+    Builds a u:find URL equipped with a W3C Text Fragment (#:~:text=...)
+    to scroll to and visually highlight the specific event / room in the browser.
+    Example:
+    https://ufind.univie.ac.at/de/course.html?lv=220067&semester=2026W#gr3:~:text=Seminarraum%206%2C%20Kolingasse%2014-16%2C%20EG00
+    """
+    if not url:
+        return ""
+    if not location:
+        return url
+        
+    base_url = url.split(":~:text=")[0]
+    clean_loc = location.replace('\\,', ',').replace('\n', ' ').strip()
+    encoded_fragment = urllib.parse.quote(clean_loc, safe='')
+    
+    if "#" in base_url:
+        return f"{base_url}:~:text={encoded_fragment}"
+    else:
+        return f"{base_url}#:~:text={encoded_fragment}"
 
 
 def parse_ics_datetime(dt_str: str) -> Optional[datetime]:
@@ -154,7 +177,7 @@ def analyze_room_status(ics_content: str, target_time: datetime, room_label: str
             "end": current_course["end"].strftime("%H:%M"),
             "date": current_course["start"].strftime("%Y-%m-%d"),
             "location": current_course["location"],
-            "url": current_course["url"],
+            "url": build_ufind_highlight_url(current_course["url"], current_course["location"], current_course["start"]),
             "ends_in": f"{mins_left} min" if mins_left < 60 else f"{mins_left // 60}h {mins_left % 60}m",
         }
         
@@ -169,7 +192,7 @@ def analyze_room_status(ics_content: str, target_time: datetime, room_label: str
             "end": next_course["end"].strftime("%H:%M"),
             "date": next_course["start"].strftime("%Y-%m-%d"),
             "location": next_course["location"],
-            "url": next_course["url"],
+            "url": build_ufind_highlight_url(next_course["url"], next_course["location"], next_course["start"]),
             "starts_in": f"in {mins_until} min" if mins_until < 60 else f"in {mins_until // 60}h {mins_until % 60}m"
         }
         

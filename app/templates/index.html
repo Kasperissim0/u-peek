@@ -171,11 +171,16 @@
         </div>
 
         <!-- Next Upcoming Course Section -->
-        <div id="nextCourseSection" class="hidden bg-slate-900/40 rounded-xl p-3 border border-slate-800 text-xs space-y-1">
+        <div id="nextCourseSection" class="hidden bg-slate-900/40 rounded-xl p-3 border border-slate-800 text-xs space-y-1.5">
           <div class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Next Scheduled Lecture:</div>
           <div class="flex items-baseline justify-between">
             <span id="nextCourseTitle" class="font-medium text-slate-200 truncate pr-2"></span>
             <span id="nextCourseTime" class="font-mono text-[11px] text-slate-400 shrink-0"></span>
+          </div>
+          <div class="pt-0.5">
+            <a id="nextCourseUfindLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center text-[11px] text-indigo-400 hover:text-indigo-300 font-medium transition">
+              <span>Open in Course Directory (u:find) →</span>
+            </a>
           </div>
         </div>
 
@@ -420,6 +425,14 @@
       if (data.next_course) {
         document.getElementById("nextCourseTitle").textContent = data.next_course.title;
         document.getElementById("nextCourseTime").textContent = `${data.next_course.date} ${data.next_course.start}`;
+        
+        const nextLink = document.getElementById("nextCourseUfindLink");
+        if (data.next_course.url) {
+          nextLink.href = data.next_course.url;
+          nextLink.classList.remove("hidden");
+        } else {
+          nextLink.classList.add("hidden");
+        }
         nextBox.classList.remove("hidden");
       } else {
         nextBox.classList.add("hidden");
