@@ -6,43 +6,14 @@
 ---
 
 ## Table of Contents
-0. [Legal Notice & Disclaimers](#0-legal-notice--disclaimers)
 1. [Core Features](#core-features)
 2. [Data Pipeline & Architecture](#data-pipeline--architecture)
 3. [Zero-Sleep Keep-Alive Configuration](#zero-sleep-keep-alive-configuration)
 4. [Migration to Raspberry Pi / Local Server](#migration-to-raspberry-pi--local-server)
 5. [Running Locally on macOS / Linux](#running-locally-on-macos--linux)
 6. [REST API Reference](#rest-api-reference)
-
----
-
-## 0. Legal Notice & Disclaimers
-
-### Non-Affiliation Disclaimer
-`u:peek` is an independent, non-commercial open-source student utility. It is **not** affiliated with, maintained, sponsored, or officially endorsed by the **University of Vienna** (*Universität Wien*). All trademarks, service marks, campus names, and building designations belong to their respective owners.
-
-### Compliance with Austrian & European Union Law
-
-1. **Public Statutory Data Access (Universitätsgesetz 2002 – UG §§ 79, 80)**:  
-   Under the Austrian Universities Act (*UG 2002*), public universities are legally mandated to publish their course catalogs (*Vorlesungsverzeichnis*), examination dates, teaching locations, and designated instructors publicly for student transparency.
-
-2. **Copyright & Factual Data (Austrian UrhG § 1)**:  
-   Course codes, room numbers, dates, timetable intervals, and lecture locations constitute raw, non-copyrightable factual data under **§ 1 UrhG** (lacking *eigentümliche geistige Schöpfung* / individual creative expression).
-
-3. **Text and Data Mining (EU Directive 2019/790 & Austrian UrhG § 42h)**:  
-   Under the European Union Directive on Copyright in the Digital Single Market (implemented in **§ 42h UrhG**), automated processing and reading of lawfully accessible public content is explicitly permitted for legitimate informational purposes where no machine-readable opt-out exists.
-
-4. **Database Rights (Directive 96/9/EC & CJEU Case Law)**:  
-   According to consistent jurisprudence from the Court of Justice of the European Union (*CJEU C-203/02 British Horseracing Board* and *C-444/02 Fixtures Marketing*), data generated as a natural byproduct of core operational or statutory administrative activities does not qualify for *sui generis* database exclusivity.
-
-5. **Open RFC 5545 Syndication Feeds & Robots.txt**:  
-   `u:peek` queries the publicly accessible iCalendar feed (`m2-ufind.univie.ac.at/courses/calendar/query.ics`), which is deliberately exposed by the university for open external calendar subscriptions (RFC 5545). No login credentials, session cookies, or access-control barriers are bypassed. Crawler policies in `univie.ac.at/robots.txt` are strictly respected.
-
-6. **Data Protection & GDPR (DSGVO Art. 6(1)(f))**:  
-   Displaying public course instructors for classroom schedule verification falls under legitimate interest (**Art. 6(1)(f) DSGVO**). `u:peek` does **not** collect, store, index, or profile private individual contact data (no personal email addresses or phone numbers).
-
-7. **Server Integrity & Responsible Caching (StGB § 126b)**:  
-   To prevent server strain and uphold fair computing ethics, all fetched timetable blocks are cached locally in SQLite for **6 hours**. Direct requests to university infrastructure are strictly throttled and rate-limited.
+7. [Legal Notice & Disclaimers](#7-legal-notice--disclaimers)
+8. [License](#8-license)
 
 ---
 
@@ -257,3 +228,40 @@ Open `http://localhost:8000` in your browser.
   }
 }
 ```
+
+---
+
+## 7. Legal Notice & Disclaimers
+
+### Non-Affiliation Disclaimer
+`u:peek` is an independent, non-commercial open-source student utility. It is **not** affiliated with, maintained, sponsored, or officially endorsed by the **University of Vienna** (*Universität Wien*). All trademarks, service marks, campus names, and building designations belong to their respective owners.
+
+### Compliance with Austrian & European Union Law
+
+1. **Public Statutory Data Access (Universitätsgesetz 2002 – UG §§ 79, 80)**:  
+   Under the Austrian Universities Act (*UG 2002*), public universities are legally mandated to publish their course catalogs (*Vorlesungsverzeichnis*), examination dates, teaching locations, and designated instructors publicly for student transparency.
+
+2. **Copyright & Factual Data (Austrian UrhG § 1)**:  
+   Course codes, room numbers, dates, timetable intervals, and lecture locations constitute raw, non-copyrightable factual data under **§ 1 UrhG** (lacking *eigentümliche geistige Schöpfung* / individual creative expression).
+
+3. **Text and Data Mining (EU Directive 2019/790 & Austrian UrhG § 42h)**:  
+   Under the European Union Directive on Copyright in the Digital Single Market (implemented in **§ 42h UrhG**), automated processing and reading of lawfully accessible public content is explicitly permitted for legitimate informational purposes where no machine-readable opt-out exists.
+
+4. **Database Rights (Directive 96/9/EC & CJEU Case Law)**:  
+   According to consistent jurisprudence from the Court of Justice of the European Union (*CJEU C-203/02 British Horseracing Board* and *C-444/02 Fixtures Marketing*), data generated as a natural byproduct of core operational or statutory administrative activities does not qualify for *sui generis* database exclusivity.
+
+5. **Open RFC 5545 Syndication Feeds & Robots.txt**:  
+   `u:peek` queries the publicly accessible iCalendar feed (`m2-ufind.univie.ac.at/courses/calendar/query.ics`), which is deliberately exposed by the university for open external calendar subscriptions (RFC 5545). No login credentials, session cookies, or access-control barriers are bypassed. Crawler policies in `univie.ac.at/robots.txt` are strictly respected.
+
+6. **Data Protection & GDPR (DSGVO Art. 6(1)(f))**:  
+   Displaying public course instructors for classroom schedule verification falls under legitimate interest (**Art. 6(1)(f) DSGVO**). `u:peek` does **not** collect, store, index, or profile private individual contact data (no personal email addresses or phone numbers).
+
+7. **Server Integrity & Responsible Caching (StGB § 126b)**:  
+   To prevent server strain and uphold fair computing ethics, all fetched timetable blocks are cached locally in SQLite for **6 hours**. Direct requests to university infrastructure are strictly throttled and rate-limited.
+
+---
+
+## 8. License
+
+This project is open-source and released under the **[MIT License](LICENSE)**.
+
