@@ -23,6 +23,7 @@ DEFAULT_CAMPUSES = [
         "name": "Währinger Straße 29 (Informatik / Physik / Publizistik)",
         "address": "Währinger Straße 29, 1090 Wien",
         "query_prefix": "Währinger Straße 29",
+        "spl_codes": "spl5,spl26,spl22",
         "display_order": 1,
     },
     {
@@ -30,6 +31,7 @@ DEFAULT_CAMPUSES = [
         "name": "Oskar-Morgenstern-Platz 1 (Mathematik / Wirtschaft)",
         "address": "Oskar-Morgenstern-Platz 1, 1090 Wien",
         "query_prefix": "Oskar-Morgenstern-Platz 1",
+        "spl_codes": "spl25,spl4",
         "display_order": 2,
     },
     {
@@ -37,13 +39,15 @@ DEFAULT_CAMPUSES = [
         "name": "Juridicum (Schottenbastei 10-16 - Rechtswissenschaften)",
         "address": "Schottenbastei 10-16, 1010 Wien",
         "query_prefix": "Schottenbastei 10-16",
+        "spl_codes": "spl34",
         "display_order": 3,
     },
     {
         "id": "hauptgebaeude",
         "name": "Hauptgebäude (Universitätsring 1 - Geisteswissenschaften / Rektorat)",
         "address": "Universitätsring 1, 1010 Wien",
-        "query_prefix": "Hauptgebäude Universitätsring 1",
+        "query_prefix": "Hauptgebäude",
+        "spl_codes": "spl6,spl7,spl9,spl10,spl1",
         "display_order": 4,
     },
     {
@@ -51,6 +55,7 @@ DEFAULT_CAMPUSES = [
         "name": "NIG Neues Institutsgebäude (Universitätsstraße 7 - Sozialwiss. / Philosophie)",
         "address": "Universitätsstraße 7, 1010 Wien",
         "query_prefix": "Universitätsstraße 7",
+        "spl_codes": "spl2,spl20,spl21,spl24",
         "display_order": 5,
     },
     {
@@ -58,6 +63,7 @@ DEFAULT_CAMPUSES = [
         "name": "Campus Altes AKH (Spitalgasse 2 - Kulturwissenschaften / Sprachen)",
         "address": "Spitalgasse 2, 1090 Wien",
         "query_prefix": "Spitalgasse 2 Hof",
+        "spl_codes": "spl3,spl6,spl12",
         "display_order": 6,
     },
     {
@@ -65,6 +71,7 @@ DEFAULT_CAMPUSES = [
         "name": "UBB Biologiezentrum (Djerassiplatz 1 - Biologie / Lebenswissenschaften)",
         "address": "Djerassiplatz 1, 1030 Wien",
         "query_prefix": "Djerassiplatz 1",
+        "spl_codes": "spl30,spl31",
         "display_order": 7,
     },
     {
@@ -72,6 +79,7 @@ DEFAULT_CAMPUSES = [
         "name": "UZA II (Josef-Holaubek-Platz 2 - Pharmazie / Geowissenschaften)",
         "address": "Josef-Holaubek-Platz 2, 1090 Wien",
         "query_prefix": "Josef-Holaubek-Platz 2",
+        "spl_codes": "spl28,spl29",
         "display_order": 8,
     },
     {
@@ -79,6 +87,7 @@ DEFAULT_CAMPUSES = [
         "name": "Fakultät für Chemie (Währinger Straße 38-42)",
         "address": "Währinger Straße 38-42, 1090 Wien",
         "query_prefix": "Währinger Straße 38",
+        "spl_codes": "spl27",
         "display_order": 9,
     },
     {
@@ -86,6 +95,7 @@ DEFAULT_CAMPUSES = [
         "name": "Fakultät für Physik (Boltzmanngasse 5 / Strudlhofgasse 4)",
         "address": "Boltzmanngasse 5, 1090 Wien",
         "query_prefix": "Boltzmanngasse 5",
+        "spl_codes": "spl26",
         "display_order": 10,
     },
     {
@@ -93,6 +103,7 @@ DEFAULT_CAMPUSES = [
         "name": "Fakultät für Psychologie (Kolingasse 14-16 / Liebiggasse 5)",
         "address": "Kolingasse 14-16, 1090 Wien",
         "query_prefix": "Kolingasse 14-16",
+        "spl_codes": "spl32",
         "display_order": 11,
     },
     {
@@ -100,6 +111,7 @@ DEFAULT_CAMPUSES = [
         "name": "Sportwissenschaft (Auf der Schmelz 6 / Sensengasse)",
         "address": "Auf der Schmelz 6, 1150 Wien",
         "query_prefix": "Auf der Schmelz 6",
+        "spl_codes": "spl33",
         "display_order": 12,
     },
     {
@@ -107,6 +119,7 @@ DEFAULT_CAMPUSES = [
         "name": "Theologie (Schenkenstraße 8-10)",
         "address": "Schenkenstraße 8-10, 1010 Wien",
         "query_prefix": "Schenkenstraße 8-10",
+        "spl_codes": "spl1,spl2",
         "display_order": 13,
     },
 ]
@@ -284,14 +297,15 @@ def seed_database_if_empty(force: bool = False):
         # 1. Insert/Update Campuses
         for c in DEFAULT_CAMPUSES:
             cursor.execute("""
-                INSERT INTO campuses (id, name, address, query_prefix, display_order)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO campuses (id, name, address, query_prefix, spl_codes, display_order)
+                VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(id) DO UPDATE SET
                     name = excluded.name,
                     address = excluded.address,
                     query_prefix = excluded.query_prefix,
+                    spl_codes = excluded.spl_codes,
                     display_order = excluded.display_order
-            """, (c["id"], c["name"], c["address"], c["query_prefix"], c["display_order"]))
+            """, (c["id"], c["name"], c["address"], c["query_prefix"], c.get("spl_codes", ""), c["display_order"]))
         
         # 2. Insert/Update Rooms for all Campuses
         for campus_id, rooms in SEEDED_ROOMS_MAP.items():
@@ -335,7 +349,7 @@ def get_room_details(campus_id: str, room_id: str) -> Optional[Dict[str, Any]]:
     with get_connection() as conn:
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT r.*, c.name as campus_name, c.query_prefix
+            SELECT r.*, c.name as campus_name, c.query_prefix, c.spl_codes
             FROM rooms r
             JOIN campuses c ON r.campus_id = c.id
             WHERE r.campus_id = ? AND r.id = ?

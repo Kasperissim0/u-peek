@@ -21,7 +21,7 @@ from app.catalog import (
     sync_rooms_from_directory,
     check_auto_sync_needed,
 )
-from app.fetcher import fetch_room_calendar
+from app.fetcher import fetch_campus_calendar
 from app.analyzer import analyze_room_status, VIENNA_TZ
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
@@ -115,11 +115,13 @@ async def get_room_occupancy(
     else:
         target_dt = datetime.now(VIENNA_TZ)
 
-    # Build query string for u:find calendar endpoint
-    query_str = f"{room_info['query_prefix']} {room_info['query_term']}"
-    
-    # Fetch .ics feed (using 6-hour SQLite cache)
-    ics_data = await fetch_room_calendar(query_str, force_refresh=refresh)
+    # Fetch full timetable feed for this campus / SPLs (using 6-hour SQLite cache)
+    ics_data = await fetch_campus_calendar(
+        campus_id=campus,
+        query_prefix=room_info["query_prefix"],
+        spl_codes=room_info.get("spl_codes", ""),
+        force_refresh=refresh
+    )
     
     # Analyze schedule collision
     analysis = analyze_room_status(

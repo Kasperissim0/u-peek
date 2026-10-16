@@ -26,9 +26,15 @@ def init_db():
                 name TEXT NOT NULL,
                 address TEXT NOT NULL,
                 query_prefix TEXT NOT NULL,
+                spl_codes TEXT DEFAULT '',
                 display_order INTEGER DEFAULT 100
             )
         """)
+        # Migration check for existing DB
+        try:
+            cursor.execute("ALTER TABLE campuses ADD COLUMN spl_codes TEXT DEFAULT ''")
+        except sqlite3.OperationalError:
+            pass  # Already exists
         
         # 2. Rooms table
         cursor.execute("""
