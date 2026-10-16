@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de" class="h-full bg-slate-900 text-slate-100">
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>UniWien Room Lookup</title>
+  <title>Univie Room Lookup</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -22,12 +22,12 @@
         </div>
         <div>
           <h1 class="text-base font-bold leading-tight tracking-tight">Room Lookup</h1>
-          <p class="text-xs text-slate-400">Universität Wien • Alle Fakultäten</p>
+          <p class="text-xs text-slate-400">University of Vienna • All Faculties</p>
         </div>
       </div>
       <!-- Clock badge -->
       <div id="viennaClock" class="text-xs font-mono bg-slate-700/60 border border-slate-600/50 px-2.5 py-1 rounded-full text-indigo-300">
-        --:-- Wien
+        --:-- Vienna
       </div>
     </div>
   </header>
@@ -40,7 +40,7 @@
       
       <!-- Campus Picker -->
       <div>
-        <label class="block text-xs font-medium text-slate-400 mb-1">Fakultät / Standort</label>
+        <label class="block text-xs font-medium text-slate-400 mb-1">Faculty / Campus</label>
         <div class="relative">
           <select id="campusSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-medium text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none">
             <!-- Populated via API -->
@@ -54,9 +54,9 @@
       <!-- Time Selector -->
       <div>
         <div class="flex items-center justify-between mb-1">
-          <label class="text-xs font-medium text-slate-400">Datum & Zeit</label>
+          <label class="text-xs font-medium text-slate-400">Date & Time</label>
           <button id="resetNowBtn" class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 transition">
-            ● Jetzt verwenden
+            ● Use Current Time
           </button>
         </div>
         <input type="datetime-local" id="timeInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -67,19 +67,19 @@
     <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-3.5 space-y-3 shadow-lg">
       
       <div class="flex items-center justify-between">
-        <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Raum wählen</label>
+        <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Select Room</label>
         <span id="roomCount" class="text-[11px] text-slate-500"></span>
       </div>
 
       <!-- Quick Search / Filter Input -->
       <div class="relative">
-        <input type="text" id="roomFilterInput" placeholder="🔍 Raum filtern (z.B. HS 1, PC 4, SR 2)..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <input type="text" id="roomFilterInput" placeholder="🔍 Filter rooms (e.g. HS 1, PC 4, SR 2)..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
       </div>
 
-      <!-- Hörsäle Category -->
+      <!-- Lecture Halls Category -->
       <div id="hoersaalSection" class="space-y-1.5">
         <div class="text-[11px] font-semibold text-indigo-300/80 uppercase tracking-wider flex items-center justify-between">
-          <span>Hörsäle</span>
+          <span>Lecture Halls</span>
           <span id="hsCount" class="text-[10px] text-slate-500"></span>
         </div>
         <div id="hoersaalGrid" class="grid grid-cols-3 gap-2">
@@ -87,10 +87,10 @@
         </div>
       </div>
 
-      <!-- Seminarräume Category -->
+      <!-- Seminar Rooms Category -->
       <div id="seminarSection" class="space-y-1.5 pt-1">
         <div class="text-[11px] font-semibold text-indigo-300/80 uppercase tracking-wider flex items-center justify-between">
-          <span>Seminarräume</span>
+          <span>Seminar Rooms</span>
           <span id="srCount" class="text-[10px] text-slate-500"></span>
         </div>
         <div id="seminarGrid" class="grid grid-cols-4 gap-2">
@@ -98,10 +98,10 @@
         </div>
       </div>
 
-      <!-- PC-Räume Category -->
+      <!-- Computer Labs Category -->
       <div id="pcSection" class="space-y-1.5 pt-1">
         <div class="text-[11px] font-semibold text-indigo-300/80 uppercase tracking-wider flex items-center justify-between">
-          <span>PC-Räume / EDV-Labs</span>
+          <span>Computer Labs</span>
           <span id="pcCount" class="text-[10px] text-slate-500"></span>
         </div>
         <div id="pcGrid" class="grid grid-cols-4 gap-2">
@@ -109,9 +109,9 @@
         </div>
       </div>
 
-      <!-- Other Rooms / Labs Category -->
+      <!-- Other Rooms / Ceremonial Halls Category -->
       <div id="otherSection" class="space-y-1.5 pt-1 hidden">
-        <div class="text-[11px] font-semibold text-indigo-300/80 uppercase tracking-wider">Weitere Räume & Labore</div>
+        <div class="text-[11px] font-semibold text-indigo-300/80 uppercase tracking-wider">Other Rooms & Halls</div>
         <div id="otherGrid" class="grid grid-cols-3 gap-2">
           <!-- Injected via JS -->
         </div>
@@ -122,7 +122,7 @@
     <div id="statusContainer" class="transition-all duration-300">
       <!-- Skeleton Placeholder -->
       <div id="statusPlaceholder" class="bg-slate-800/30 border border-slate-800 rounded-2xl p-6 text-center text-slate-500 text-xs">
-        Wähle oben einen Raum aus, um den Belegungsstatus zu sehen.
+        Select a room above to view its live occupancy schedule.
       </div>
 
       <!-- Active Status Card -->
@@ -150,29 +150,29 @@
           
           <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1 border-t border-slate-800">
             <div>
-              <span class="text-slate-500 block text-[10px]">Uhrzeit:</span>
+              <span class="text-slate-500 block text-[10px]">Time Slot:</span>
               <span id="courseTimeSlot" class="font-mono font-medium"></span>
             </div>
             <div>
-              <span class="text-slate-500 block text-[10px]">Ort:</span>
+              <span class="text-slate-500 block text-[10px]">Location:</span>
               <span id="courseLocation" class="truncate block"></span>
             </div>
           </div>
 
           <a id="courseUfindLink" href="#" target="_blank" class="mt-2 inline-flex items-center text-xs font-medium text-indigo-400 hover:text-indigo-300 transition">
-            Im Vorlesungsverzeichnis (u:find) öffnen &rarr;
+            Open in Course Directory (u:find) &rarr;
           </a>
         </div>
 
         <!-- Free / Vacant Message -->
         <div id="freeMessage" class="hidden bg-emerald-950/40 border border-emerald-800/40 rounded-xl p-3.5 text-xs text-emerald-200">
-          <div class="font-semibold text-emerald-300">Der Raum ist derzeit frei.</div>
+          <div class="font-semibold text-emerald-300">The room is currently vacant.</div>
           <p id="freeDurationText" class="text-slate-300 text-[11px] mt-0.5"></p>
         </div>
 
         <!-- Next Upcoming Course Section -->
         <div id="nextCourseSection" class="hidden bg-slate-900/40 rounded-xl p-3 border border-slate-800 text-xs space-y-1">
-          <div class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Nächste Lehrveranstaltung:</div>
+          <div class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Next Scheduled Lecture:</div>
           <div class="flex items-baseline justify-between">
             <span id="nextCourseTitle" class="font-medium text-slate-200 truncate pr-2"></span>
             <span id="nextCourseTime" class="font-mono text-[11px] text-slate-400 shrink-0"></span>
@@ -187,9 +187,9 @@
   <!-- Footer with Sync Status -->
   <footer class="max-w-md w-full mx-auto px-4 py-3 text-center text-[11px] text-slate-500 border-t border-slate-800/60">
     <div class="flex items-center justify-between">
-      <span>Universität Wien • Raumabfrage</span>
+      <span>University of Vienna • Room Lookup</span>
       <button id="syncRoomsBtn" class="text-indigo-400 hover:text-indigo-300 transition font-medium flex items-center space-x-1">
-        <span>🔄 Räume aktualisieren</span>
+        <span>🔄 Refresh Rooms</span>
       </button>
     </div>
   </footer>
@@ -210,8 +210,8 @@
 
     function updateLiveClock() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString("de-AT", { hour: '2-digit', minute: '2-digit' });
-      document.getElementById("viennaClock").textContent = timeStr + " Wien";
+      const timeStr = now.toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("viennaClock").textContent = timeStr + " Vienna";
       if (isLiveTime) {
         document.getElementById("timeInput").value = getNowViennaISO();
       }
@@ -248,7 +248,7 @@
     }
 
     function renderRoomGrids(rooms) {
-      document.getElementById("roomCount").textContent = `${rooms.length} Räume`;
+      document.getElementById("roomCount").textContent = `${rooms.length} Rooms`;
 
       const hoersaalGrid = document.getElementById("hoersaalGrid");
       const seminarGrid = document.getElementById("seminarGrid");
@@ -272,13 +272,14 @@
 
         btn.onclick = () => selectRoom(r.id);
 
-        if (r.category === "Hörsaal") {
+        const cat = (r.category || "").toLowerCase();
+        if (cat.includes("hörsaal") || cat.includes("lecture")) {
           hoersaalGrid.appendChild(btn);
           hsCount++;
-        } else if (r.category === "Seminarraum") {
+        } else if (cat.includes("seminar")) {
           seminarGrid.appendChild(btn);
           srCount++;
-        } else if (r.category === "PC-Raum") {
+        } else if (cat.includes("pc") || cat.includes("computer")) {
           pcGrid.appendChild(btn);
           pcCount++;
         } else {
@@ -376,15 +377,15 @@
       if (data.is_occupied) {
         card.className = "rounded-2xl border p-4 shadow-xl space-y-3.5 transition-all bg-red-950/20 border-red-800/50";
         badge.className = "text-xs font-black uppercase px-2.5 py-1 rounded-full border bg-red-500/20 text-red-300 border-red-500/40";
-        badge.textContent = "Belegt";
+        badge.textContent = "Occupied";
         
-        timeRemaining.textContent = `Endet ${data.current_course.end} (${data.current_course.ends_in})`;
+        timeRemaining.textContent = `Ends at ${data.current_course.end} (${data.current_course.ends_in})`;
         timeRemaining.classList.remove("hidden");
 
         document.getElementById("courseCodeType").textContent = `${data.current_course.code} • ${data.current_course.type}`;
         document.getElementById("courseTitle").textContent = data.current_course.title;
         document.getElementById("courseTimeSlot").textContent = `${data.current_course.start} - ${data.current_course.end}`;
-        document.getElementById("courseLocation").textContent = data.current_course.location || "Wien";
+        document.getElementById("courseLocation").textContent = data.current_course.location || "Vienna";
         
         const link = document.getElementById("courseUfindLink");
         if (data.current_course.url) {
@@ -399,7 +400,7 @@
       } else {
         card.className = "rounded-2xl border p-4 shadow-xl space-y-3.5 transition-all bg-emerald-950/20 border-emerald-800/50";
         badge.className = "text-xs font-black uppercase px-2.5 py-1 rounded-full border bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
-        badge.textContent = "Frei";
+        badge.textContent = "Vacant";
         
         timeRemaining.classList.add("hidden");
         courseBox.classList.add("hidden");
@@ -407,9 +408,9 @@
 
         const freeText = document.getElementById("freeDurationText");
         if (data.next_course) {
-          freeText.textContent = `Frei bis ${data.next_course.start} (${data.next_course.starts_in}).`;
+          freeText.textContent = `Vacant until ${data.next_course.start} (${data.next_course.starts_in}).`;
         } else {
-          freeText.textContent = "Für den restlichen Tag sind keine weiteren Lehrveranstaltungen eingetragen.";
+          freeText.textContent = "No further lectures scheduled for today.";
         }
       }
 
@@ -446,16 +447,16 @@
 
     document.getElementById("syncRoomsBtn").addEventListener("click", async () => {
       const btn = document.getElementById("syncRoomsBtn");
-      btn.textContent = "⏳ Aktualisiere...";
+      btn.textContent = "⏳ Updating...";
       try {
         const res = await fetch("/api/rooms/sync", { method: "POST" });
         const data = await res.json();
-        alert(`Raumverzeichnis aktualisiert! ${data.rooms_synced || 0} Räume synchronisiert.`);
+        alert(`Room directory refreshed! ${data.rooms_synced || 0} rooms synchronized.`);
         await loadRooms(currentCampusId);
       } catch (e) {
-        alert("Fehler bei der Aktualisierung.");
+        alert("Error updating room directory.");
       } finally {
-        btn.textContent = "🔄 Räume aktualisieren";
+        btn.textContent = "🔄 Refresh Rooms";
       }
     });
 

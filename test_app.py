@@ -46,7 +46,21 @@ def run_tests():
     assert "SR 6" in w29_labels, "SR 6 missing from W29"
     print(f"   ✓ W29 rooms: {len(w29_rooms)} (including PC 1 - PC 5, SR 1 - SR 12, HS 1 - HS 3)")
 
-    print("\n3. Testing Sanity Check: HS 1 Today at 13:45 during 051031 VU Datenbanksysteme...")
+    print("\n3. Verifying Hauptgebäude (Main Building) Rooms & Zero Duplicates...")
+    hg_rooms = get_rooms_for_campus("hauptgebaeude")
+    hg_labels = [r["label"] for r in hg_rooms]
+    assert "Audimax" in hg_labels, "Audimax missing"
+    assert "BIG-Hörsaal" in hg_labels, "BIG-Hörsaal missing"
+    assert "Großer Festsaal" in hg_labels, "Großer Festsaal missing"
+    assert "Kleiner Festsaal" in hg_labels, "Kleiner Festsaal missing"
+    assert "HS 1" in hg_labels and "HS 50" in hg_labels, "HS 1 or HS 50 missing from Hauptgebäude"
+    assert "SR 1" in hg_labels and "SR 12" in hg_labels, "SR 1 or SR 12 missing from Hauptgebäude"
+    
+    # Assert zero duplicated labels
+    assert len(hg_labels) == len(set(hg_labels)), f"Found duplicate room labels in Hauptgebäude: {hg_labels}"
+    print(f"   ✓ Hauptgebäude rooms: {len(hg_rooms)} distinct rooms (Audimax, BIG-Hörsaal, Festsaal, HS 1-50, SR 1-12, Halls). Zero duplicates.")
+
+    print("\n4. Testing Sanity Check: HS 1 Today at 13:45 during 051031 VU Datenbanksysteme...")
     t_dbs = datetime(2026, 10, 16, 13, 45, tzinfo=VIENNA_TZ) if hasattr(VIENNA_TZ, 'localize') is False else VIENNA_TZ.localize(datetime(2026, 10, 16, 13, 45))
     res_dbs = analyze_room_status(SAMPLE_ICS_DBS, t_dbs, "HS 1", "Hörsaal 1")
     assert res_dbs["is_occupied"] is True, "HS 1 should be OCCUPIED"

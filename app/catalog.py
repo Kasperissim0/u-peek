@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CAMPUSES = [
     {
         "id": "w29",
-        "name": "Währinger Straße 29 (Informatik / Physik / Publizistik)",
+        "name": "Währinger Straße 29 (Computer Science / Physics / Media)",
         "address": "Währinger Straße 29, 1090 Wien",
         "query_prefix": "Währinger Straße 29",
         "spl_codes": "spl5,spl26,spl22",
@@ -28,7 +28,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "omp",
-        "name": "Oskar-Morgenstern-Platz 1 (Mathematik / Wirtschaft)",
+        "name": "Oskar-Morgenstern-Platz 1 (Mathematics / Business & Economics)",
         "address": "Oskar-Morgenstern-Platz 1, 1090 Wien",
         "query_prefix": "Oskar-Morgenstern-Platz 1",
         "spl_codes": "spl25,spl4",
@@ -36,7 +36,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "juridicum",
-        "name": "Juridicum (Schottenbastei 10-16 - Rechtswissenschaften)",
+        "name": "Juridicum (Schottenbastei 10-16 - Faculty of Law)",
         "address": "Schottenbastei 10-16, 1010 Wien",
         "query_prefix": "Schottenbastei 10-16",
         "spl_codes": "spl34",
@@ -44,7 +44,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "hauptgebaeude",
-        "name": "Hauptgebäude (Universitätsring 1 - Geisteswissenschaften / Rektorat)",
+        "name": "Main Building / Hauptgebäude (Universitätsring 1 - Humanities)",
         "address": "Universitätsring 1, 1010 Wien",
         "query_prefix": "Hauptgebäude",
         "spl_codes": "spl6,spl7,spl9,spl10,spl1",
@@ -52,7 +52,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "nig",
-        "name": "NIG Neues Institutsgebäude (Universitätsstraße 7 - Sozialwiss. / Philosophie)",
+        "name": "NIG New Institute Building (Universitätsstraße 7 - Social Sciences)",
         "address": "Universitätsstraße 7, 1010 Wien",
         "query_prefix": "Universitätsstraße 7",
         "spl_codes": "spl2,spl20,spl21,spl24",
@@ -60,7 +60,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "campus",
-        "name": "Campus Altes AKH (Spitalgasse 2 - Kulturwissenschaften / Sprachen)",
+        "name": "Campus Altes AKH (Spitalgasse 2 - Cultural Studies / Languages)",
         "address": "Spitalgasse 2, 1090 Wien",
         "query_prefix": "Spitalgasse 2 Hof",
         "spl_codes": "spl3,spl6,spl12",
@@ -68,7 +68,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "ubb",
-        "name": "UBB Biologiezentrum (Djerassiplatz 1 - Biologie / Lebenswissenschaften)",
+        "name": "UBB Biology Centre (Djerassiplatz 1 - Life Sciences)",
         "address": "Djerassiplatz 1, 1030 Wien",
         "query_prefix": "Djerassiplatz 1",
         "spl_codes": "spl30,spl31",
@@ -76,7 +76,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "uza2",
-        "name": "UZA II (Josef-Holaubek-Platz 2 - Pharmazie / Geowissenschaften)",
+        "name": "UZA II (Josef-Holaubek-Platz 2 - Pharmacy / Geosciences)",
         "address": "Josef-Holaubek-Platz 2, 1090 Wien",
         "query_prefix": "Josef-Holaubek-Platz 2",
         "spl_codes": "spl28,spl29",
@@ -84,7 +84,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "chemie",
-        "name": "Fakultät für Chemie (Währinger Straße 38-42)",
+        "name": "Faculty of Chemistry (Währinger Straße 38-42)",
         "address": "Währinger Straße 38-42, 1090 Wien",
         "query_prefix": "Währinger Straße 38",
         "spl_codes": "spl27",
@@ -92,7 +92,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "physik_boltzmann",
-        "name": "Fakultät für Physik (Boltzmanngasse 5 / Strudlhofgasse 4)",
+        "name": "Faculty of Physics (Boltzmanngasse 5 / Strudlhofgasse 4)",
         "address": "Boltzmanngasse 5, 1090 Wien",
         "query_prefix": "Boltzmanngasse 5",
         "spl_codes": "spl26",
@@ -100,7 +100,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "psychologie",
-        "name": "Fakultät für Psychologie (Kolingasse 14-16 / Liebiggasse 5)",
+        "name": "Faculty of Psychology (Kolingasse 14-16 / Liebiggasse 5)",
         "address": "Kolingasse 14-16, 1090 Wien",
         "query_prefix": "Kolingasse 14-16",
         "spl_codes": "spl32",
@@ -108,7 +108,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "sport",
-        "name": "Sportwissenschaft (Auf der Schmelz 6 / Sensengasse)",
+        "name": "Center for Sport Science (Auf der Schmelz 6)",
         "address": "Auf der Schmelz 6, 1150 Wien",
         "query_prefix": "Auf der Schmelz 6",
         "spl_codes": "spl33",
@@ -116,7 +116,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "theologie",
-        "name": "Theologie (Schenkenstraße 8-10)",
+        "name": "Faculties of Theology (Schenkenstraße 8-10)",
         "address": "Schenkenstraße 8-10, 1010 Wien",
         "query_prefix": "Schenkenstraße 8-10",
         "spl_codes": "spl1,spl2",
@@ -126,162 +126,183 @@ DEFAULT_CAMPUSES = [
 
 # Curated room seeds per campus
 SEEDED_ROOMS_MAP = {
-    # 1. Währinger Straße 29 (Informatik / Physik / Publizistik)
+    # 1. Währinger Straße 29 (Computer Science / Physics / Media)
     "w29": [
-        # Hörsäle
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 1},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 2},
-        {"id": "hs3", "label": "HS 3", "category": "Hörsaal", "query_term": "Hörsaal 3", "display_order": 3},
-        # Seminarräume
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 11},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 12},
-        {"id": "sr3", "label": "SR 3", "category": "Seminarraum", "query_term": "Seminarraum 3", "display_order": 13},
-        {"id": "sr4", "label": "SR 4", "category": "Seminarraum", "query_term": "Seminarraum 4", "display_order": 14},
-        {"id": "sr5", "label": "SR 5", "category": "Seminarraum", "query_term": "Seminarraum 5", "display_order": 15},
-        {"id": "sr6", "label": "SR 6", "category": "Seminarraum", "query_term": "Seminarraum 6", "display_order": 16},
-        {"id": "sr7", "label": "SR 7", "category": "Seminarraum", "query_term": "Seminarraum 7", "display_order": 17},
-        {"id": "sr8", "label": "SR 8", "category": "Seminarraum", "query_term": "Seminarraum 8", "display_order": 18},
-        {"id": "sr9", "label": "SR 9", "category": "Seminarraum", "query_term": "Seminarraum 9", "display_order": 19},
-        {"id": "sr10", "label": "SR 10", "category": "Seminarraum", "query_term": "Seminarraum 10", "display_order": 20},
-        {"id": "sr11", "label": "SR 11", "category": "Seminarraum", "query_term": "Seminarraum 11", "display_order": 21},
-        {"id": "sr12", "label": "SR 12", "category": "Seminarraum", "query_term": "Seminarraum 12", "display_order": 22},
-        # PC-Unterrichtsräume & Labs
-        {"id": "pc1", "label": "PC 1", "category": "PC-Raum", "query_term": "PC-Unterrichtsraum 1", "display_order": 31},
-        {"id": "pc2", "label": "PC 2", "category": "PC-Raum", "query_term": "PC-Unterrichtsraum 2", "display_order": 32},
-        {"id": "pc3", "label": "PC 3", "category": "PC-Raum", "query_term": "PC-Unterrichtsraum 3", "display_order": 33},
-        {"id": "pc4", "label": "PC 4", "category": "PC-Raum", "query_term": "PC-Unterrichtsraum 4", "display_order": 34},
-        {"id": "pc5", "label": "PC 5", "category": "PC-Raum", "query_term": "PC-Unterrichtsraum 5", "display_order": 35},
-        {"id": "pr1", "label": "Praktikumsraum 1", "category": "Labor", "query_term": "Praktikumsraum 1", "display_order": 41},
-        {"id": "pr2", "label": "Praktikumsraum 2", "category": "Labor", "query_term": "Praktikumsraum 2", "display_order": 42},
+        # Lecture Halls
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 1},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 2},
+        {"id": "hs3", "label": "HS 3", "category": "Lecture Hall", "query_term": "Hörsaal 3", "display_order": 3},
+        # Seminar Rooms
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 11},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 12},
+        {"id": "sr3", "label": "SR 3", "category": "Seminar Room", "query_term": "Seminarraum 3", "display_order": 13},
+        {"id": "sr4", "label": "SR 4", "category": "Seminar Room", "query_term": "Seminarraum 4", "display_order": 14},
+        {"id": "sr5", "label": "SR 5", "category": "Seminar Room", "query_term": "Seminarraum 5", "display_order": 15},
+        {"id": "sr6", "label": "SR 6", "category": "Seminar Room", "query_term": "Seminarraum 6", "display_order": 16},
+        {"id": "sr7", "label": "SR 7", "category": "Seminar Room", "query_term": "Seminarraum 7", "display_order": 17},
+        {"id": "sr8", "label": "SR 8", "category": "Seminar Room", "query_term": "Seminarraum 8", "display_order": 18},
+        {"id": "sr9", "label": "SR 9", "category": "Seminar Room", "query_term": "Seminarraum 9", "display_order": 19},
+        {"id": "sr10", "label": "SR 10", "category": "Seminar Room", "query_term": "Seminarraum 10", "display_order": 20},
+        {"id": "sr11", "label": "SR 11", "category": "Seminar Room", "query_term": "Seminarraum 11", "display_order": 21},
+        {"id": "sr12", "label": "SR 12", "category": "Seminar Room", "query_term": "Seminarraum 12", "display_order": 22},
+        # Computer Labs & Labs
+        {"id": "pc1", "label": "PC 1", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 1", "display_order": 31},
+        {"id": "pc2", "label": "PC 2", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 2", "display_order": 32},
+        {"id": "pc3", "label": "PC 3", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 3", "display_order": 33},
+        {"id": "pc4", "label": "PC 4", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 4", "display_order": 34},
+        {"id": "pc5", "label": "PC 5", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 5", "display_order": 35},
+        {"id": "pr1", "label": "Praktikumsraum 1", "category": "Laboratory", "query_term": "Praktikumsraum 1", "display_order": 41},
+        {"id": "pr2", "label": "Praktikumsraum 2", "category": "Laboratory", "query_term": "Praktikumsraum 2", "display_order": 42},
     ],
-    # 2. Juridicum (Rechtswissenschaften)
+    # 2. Juridicum (Law)
     "juridicum": [
-        {"id": "u10", "label": "HS U10", "category": "Hörsaal", "query_term": "Hörsaal U10", "display_order": 1},
-        {"id": "u11", "label": "HS U11", "category": "Hörsaal", "query_term": "Hörsaal U11", "display_order": 2},
-        {"id": "u12", "label": "HS U12", "category": "Hörsaal", "query_term": "Hörsaal U12", "display_order": 3},
-        {"id": "u13", "label": "HS U13", "category": "Hörsaal", "query_term": "Hörsaal U13", "display_order": 4},
-        {"id": "u14", "label": "HS U14", "category": "Hörsaal", "query_term": "Hörsaal U14", "display_order": 5},
-        {"id": "u15", "label": "HS U15", "category": "Hörsaal", "query_term": "Hörsaal U15", "display_order": 6},
-        {"id": "u18", "label": "HS U18", "category": "Hörsaal", "query_term": "Hörsaal U18", "display_order": 7},
-        {"id": "u21", "label": "HS U21", "category": "Hörsaal", "query_term": "Hörsaal U21", "display_order": 8},
-        {"id": "u22", "label": "HS U22", "category": "Hörsaal", "query_term": "Hörsaal U22", "display_order": 9},
-        {"id": "sem10", "label": "SEM 10", "category": "Seminarraum", "query_term": "Seminarraum 10", "display_order": 21},
-        {"id": "sem20", "label": "SEM 20", "category": "Seminarraum", "query_term": "Seminarraum 20", "display_order": 22},
-        {"id": "sem31", "label": "SEM 31", "category": "Seminarraum", "query_term": "Seminarraum 31", "display_order": 23},
-        {"id": "sem32", "label": "SEM 32", "category": "Seminarraum", "query_term": "Seminarraum 32", "display_order": 24},
-        {"id": "sem41", "label": "SEM 41", "category": "Seminarraum", "query_term": "Seminarraum 41", "display_order": 25},
-        {"id": "sem42", "label": "SEM 42", "category": "Seminarraum", "query_term": "Seminarraum 42", "display_order": 26},
-        {"id": "sem51", "label": "SEM 51", "category": "Seminarraum", "query_term": "Seminarraum 51", "display_order": 27},
-        {"id": "sem52", "label": "SEM 52", "category": "Seminarraum", "query_term": "Seminarraum 52", "display_order": 28},
+        {"id": "u10", "label": "HS U10", "category": "Lecture Hall", "query_term": "Hörsaal U10", "display_order": 1},
+        {"id": "u11", "label": "HS U11", "category": "Lecture Hall", "query_term": "Hörsaal U11", "display_order": 2},
+        {"id": "u12", "label": "HS U12", "category": "Lecture Hall", "query_term": "Hörsaal U12", "display_order": 3},
+        {"id": "u13", "label": "HS U13", "category": "Lecture Hall", "query_term": "Hörsaal U13", "display_order": 4},
+        {"id": "u14", "label": "HS U14", "category": "Lecture Hall", "query_term": "Hörsaal U14", "display_order": 5},
+        {"id": "u15", "label": "HS U15", "category": "Lecture Hall", "query_term": "Hörsaal U15", "display_order": 6},
+        {"id": "u18", "label": "HS U18", "category": "Lecture Hall", "query_term": "Hörsaal U18", "display_order": 7},
+        {"id": "u21", "label": "HS U21", "category": "Lecture Hall", "query_term": "Hörsaal U21", "display_order": 8},
+        {"id": "u22", "label": "HS U22", "category": "Lecture Hall", "query_term": "Hörsaal U22", "display_order": 9},
+        {"id": "sem10", "label": "SEM 10", "category": "Seminar Room", "query_term": "Seminarraum 10", "display_order": 21},
+        {"id": "sem20", "label": "SEM 20", "category": "Seminar Room", "query_term": "Seminarraum 20", "display_order": 22},
+        {"id": "sem31", "label": "SEM 31", "category": "Seminar Room", "query_term": "Seminarraum 31", "display_order": 23},
+        {"id": "sem32", "label": "SEM 32", "category": "Seminar Room", "query_term": "Seminarraum 32", "display_order": 24},
+        {"id": "sem41", "label": "SEM 41", "category": "Seminar Room", "query_term": "Seminarraum 41", "display_order": 25},
+        {"id": "sem42", "label": "SEM 42", "category": "Seminar Room", "query_term": "Seminarraum 42", "display_order": 26},
+        {"id": "sem51", "label": "SEM 51", "category": "Seminar Room", "query_term": "Seminarraum 51", "display_order": 27},
+        {"id": "sem52", "label": "SEM 52", "category": "Seminar Room", "query_term": "Seminarraum 52", "display_order": 28},
     ],
-    # 3. NIG (Neues Institutsgebäude)
+    # 3. NIG (New Institute Building)
     "nig": [
-        {"id": "hsi", "label": "HS I", "category": "Hörsaal", "query_term": "Hörsaal I", "display_order": 1},
-        {"id": "hsii", "label": "HS II", "category": "Hörsaal", "query_term": "Hörsaal II", "display_order": 2},
-        {"id": "hsiii", "label": "HS III", "category": "Hörsaal", "query_term": "Hörsaal III", "display_order": 3},
-        {"id": "hs3b", "label": "HS 3B", "category": "Hörsaal", "query_term": "Hörsaal 3B", "display_order": 4},
-        {"id": "hs3c", "label": "HS 3C", "category": "Hörsaal", "query_term": "Hörsaal 3C", "display_order": 5},
-        {"id": "hs4a", "label": "HS 4A", "category": "Hörsaal", "query_term": "Hörsaal 4A", "display_order": 6},
-        {"id": "hs4b", "label": "HS 4B", "category": "Hörsaal", "query_term": "Hörsaal 4B", "display_order": 7},
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 21},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 22},
-        {"id": "sr3", "label": "SR 3", "category": "Seminarraum", "query_term": "Seminarraum 3", "display_order": 23},
-        {"id": "sr4", "label": "SR 4", "category": "Seminarraum", "query_term": "Seminarraum 4", "display_order": 24},
-        {"id": "sr5", "label": "SR 5", "category": "Seminarraum", "query_term": "Seminarraum 5", "display_order": 25},
-        {"id": "sr6", "label": "SR 6", "category": "Seminarraum", "query_term": "Seminarraum 6", "display_order": 26},
+        {"id": "hsi", "label": "HS I", "category": "Lecture Hall", "query_term": "Hörsaal I", "display_order": 1},
+        {"id": "hsii", "label": "HS II", "category": "Lecture Hall", "query_term": "Hörsaal II", "display_order": 2},
+        {"id": "hsiii", "label": "HS III", "category": "Lecture Hall", "query_term": "Hörsaal III", "display_order": 3},
+        {"id": "hs3b", "label": "HS 3B", "category": "Lecture Hall", "query_term": "Hörsaal 3B", "display_order": 4},
+        {"id": "hs3c", "label": "HS 3C", "category": "Lecture Hall", "query_term": "Hörsaal 3C", "display_order": 5},
+        {"id": "hs4a", "label": "HS 4A", "category": "Lecture Hall", "query_term": "Hörsaal 4A", "display_order": 6},
+        {"id": "hs4b", "label": "HS 4B", "category": "Lecture Hall", "query_term": "Hörsaal 4B", "display_order": 7},
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 21},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 22},
+        {"id": "sr3", "label": "SR 3", "category": "Seminar Room", "query_term": "Seminarraum 3", "display_order": 23},
+        {"id": "sr4", "label": "SR 4", "category": "Seminar Room", "query_term": "Seminarraum 4", "display_order": 24},
+        {"id": "sr5", "label": "SR 5", "category": "Seminar Room", "query_term": "Seminarraum 5", "display_order": 25},
+        {"id": "sr6", "label": "SR 6", "category": "Seminar Room", "query_term": "Seminarraum 6", "display_order": 26},
     ],
-    # 4. Oskar-Morgenstern-Platz 1 (Mathematik & Wirtschaft)
+    # 4. Oskar-Morgenstern-Platz 1 (Mathematics & Business)
     "omp": [
-        *[{"id": f"hs{i}", "label": f"HS {i}", "category": "Hörsaal", "query_term": f"Hörsaal {i}", "display_order": i} for i in range(1, 18)],
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 20 + i} for i in range(1, 17)],
-        *[{"id": f"pc{i}", "label": f"PC {i}", "category": "PC-Raum", "query_term": f"PC-Raum {i}", "display_order": 50 + i} for i in range(1, 8)],
+        *[{"id": f"hs{i}", "label": f"HS {i}", "category": "Lecture Hall", "query_term": f"Hörsaal {i}", "display_order": i} for i in range(1, 18)],
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 20 + i} for i in range(1, 17)],
+        *[{"id": f"pc{i}", "label": f"PC {i}", "category": "Computer Lab", "query_term": f"PC-Raum {i}", "display_order": 50 + i} for i in range(1, 8)],
     ],
     # 5. Hauptgebäude (Universitätsring 1)
     "hauptgebaeude": [
-        {"id": "audimax", "label": "Audimax", "category": "Hörsaal", "query_term": "Audimax", "display_order": 1},
-        {"id": "gr_festsaal", "label": "Großer Festsaal", "category": "Hörsaal", "query_term": "Großer Festsaal", "display_order": 2},
-        {"id": "kl_festsaal", "label": "Kleiner Festsaal", "category": "Hörsaal", "query_term": "Kleiner Festsaal", "display_order": 3},
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 10},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 11},
-        {"id": "hs3", "label": "HS 3", "category": "Hörsaal", "query_term": "Hörsaal 3", "display_order": 12},
-        {"id": "hs5", "label": "HS 5", "category": "Hörsaal", "query_term": "Hörsaal 5", "display_order": 13},
-        {"id": "hs7", "label": "HS 7", "category": "Hörsaal", "query_term": "Hörsaal 7", "display_order": 14},
-        {"id": "hs16", "label": "HS 16", "category": "Hörsaal", "query_term": "Hörsaal 16", "display_order": 15},
-        {"id": "hs21", "label": "HS 21", "category": "Hörsaal", "query_term": "Hörsaal 21", "display_order": 16},
-        {"id": "hs27", "label": "HS 27", "category": "Hörsaal", "query_term": "Hörsaal 27", "display_order": 17},
-        {"id": "hs30", "label": "HS 30", "category": "Hörsaal", "query_term": "Hörsaal 30", "display_order": 18},
-        {"id": "hs31", "label": "HS 31", "category": "Hörsaal", "query_term": "Hörsaal 31", "display_order": 19},
-        {"id": "hs32", "label": "HS 32", "category": "Hörsaal", "query_term": "Hörsaal 32", "display_order": 20},
-        {"id": "hs33", "label": "HS 33", "category": "Hörsaal", "query_term": "Hörsaal 33", "display_order": 21},
-        {"id": "hs34", "label": "HS 34", "category": "Hörsaal", "query_term": "Hörsaal 34", "display_order": 22},
-        {"id": "hs42", "label": "HS 42", "category": "Hörsaal", "query_term": "Hörsaal 42", "display_order": 23},
-        {"id": "hs50", "label": "HS 50", "category": "Hörsaal", "query_term": "Hörsaal 50", "display_order": 24},
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 40 + i} for i in range(1, 9)],
+        {"id": "audimax", "label": "Audimax", "category": "Lecture Hall", "query_term": "Audimax", "display_order": 1},
+        {"id": "big-hoersaal", "label": "BIG-Hörsaal", "category": "Lecture Hall", "query_term": "BIG-Hörsaal", "display_order": 2},
+        {"id": "grosser-festsaal", "label": "Großer Festsaal", "category": "Lecture Hall", "query_term": "Großer Festsaal", "display_order": 3},
+        {"id": "kleiner-festsaal", "label": "Kleiner Festsaal", "category": "Lecture Hall", "query_term": "Kleiner Festsaal", "display_order": 4},
+        # Complete list of Hauptgebäude lecture halls
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 10},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 11},
+        {"id": "hs3", "label": "HS 3", "category": "Lecture Hall", "query_term": "Hörsaal 3", "display_order": 12},
+        {"id": "hs5", "label": "HS 5", "category": "Lecture Hall", "query_term": "Hörsaal 5", "display_order": 13},
+        {"id": "hs6", "label": "HS 6", "category": "Lecture Hall", "query_term": "Hörsaal 6", "display_order": 14},
+        {"id": "hs7", "label": "HS 7", "category": "Lecture Hall", "query_term": "Hörsaal 7", "display_order": 15},
+        {"id": "hs16", "label": "HS 16", "category": "Lecture Hall", "query_term": "Hörsaal 16", "display_order": 16},
+        {"id": "hs21", "label": "HS 21", "category": "Lecture Hall", "query_term": "Hörsaal 21", "display_order": 17},
+        {"id": "hs23", "label": "HS 23", "category": "Lecture Hall", "query_term": "Hörsaal 23", "display_order": 18},
+        {"id": "hs24", "label": "HS 24", "category": "Lecture Hall", "query_term": "Hörsaal 24", "display_order": 19},
+        {"id": "hs26", "label": "HS 26", "category": "Lecture Hall", "query_term": "Hörsaal 26", "display_order": 20},
+        {"id": "hs27", "label": "HS 27", "category": "Lecture Hall", "query_term": "Hörsaal 27", "display_order": 21},
+        {"id": "hs28", "label": "HS 28", "category": "Lecture Hall", "query_term": "Hörsaal 28", "display_order": 22},
+        {"id": "hs29", "label": "HS 29", "category": "Lecture Hall", "query_term": "Hörsaal 29", "display_order": 23},
+        {"id": "hs30", "label": "HS 30", "category": "Lecture Hall", "query_term": "Hörsaal 30", "display_order": 24},
+        {"id": "hs31", "label": "HS 31", "category": "Lecture Hall", "query_term": "Hörsaal 31", "display_order": 25},
+        {"id": "hs32", "label": "HS 32", "category": "Lecture Hall", "query_term": "Hörsaal 32", "display_order": 26},
+        {"id": "hs33", "label": "HS 33", "category": "Lecture Hall", "query_term": "Hörsaal 33", "display_order": 27},
+        {"id": "hs34", "label": "HS 34", "category": "Lecture Hall", "query_term": "Hörsaal 34", "display_order": 28},
+        {"id": "hs38", "label": "HS 38", "category": "Lecture Hall", "query_term": "Hörsaal 38", "display_order": 29},
+        {"id": "hs41", "label": "HS 41 (Gerda-Lerner)", "category": "Lecture Hall", "query_term": "Hörsaal 41", "display_order": 30},
+        {"id": "hs42", "label": "HS 42", "category": "Lecture Hall", "query_term": "Hörsaal 42", "display_order": 31},
+        {"id": "hs45", "label": "HS 45", "category": "Lecture Hall", "query_term": "Hörsaal 45", "display_order": 32},
+        {"id": "hs47", "label": "HS 47", "category": "Lecture Hall", "query_term": "Hörsaal 47", "display_order": 33},
+        {"id": "hs50", "label": "HS 50", "category": "Lecture Hall", "query_term": "Hörsaal 50", "display_order": 34},
+        # Seminar Rooms
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 50 + i} for i in range(1, 13)],
+        # Historic & Ceremonial Halls
+        {"id": "arkadenhof", "label": "Arkadenhof", "category": "Hall", "query_term": "Arkadenhof", "display_order": 70},
+        {"id": "elise-richter-saal", "label": "Elise Richter Saal", "category": "Hall", "query_term": "Elise Richter Saal", "display_order": 71},
+        {"id": "erika-weinzierl-saal", "label": "Erika Weinzierl Saal", "category": "Hall", "query_term": "Erika Weinzierl Saal", "display_order": 72},
+        {"id": "franz-koenig-saal", "label": "Franz König Saal", "category": "Hall", "query_term": "Franz Koenig Saal", "display_order": 73},
+        {"id": "marietta-blau-saal", "label": "Marietta Blau Saal", "category": "Hall", "query_term": "Marietta Blau Saal", "display_order": 74},
+        {"id": "senatssaal", "label": "Senatssaal", "category": "Hall", "query_term": "Senatssaal", "display_order": 75},
+        {"id": "green-lounge", "label": "Green Lounge", "category": "Hall", "query_term": "Green Lounge", "display_order": 76},
     ],
     # 6. Campus Altes AKH (Spitalgasse 2)
     "campus": [
-        {"id": "hsa", "label": "HS A", "category": "Hörsaal", "query_term": "Hörsaal A", "display_order": 1},
-        {"id": "hsb", "label": "HS B", "category": "Hörsaal", "query_term": "Hörsaal B", "display_order": 2},
-        {"id": "hsc1", "label": "HS C1", "category": "Hörsaal", "query_term": "Hörsaal C1", "display_order": 3},
-        {"id": "hsc2", "label": "HS C2", "category": "Hörsaal", "query_term": "Hörsaal C2", "display_order": 4},
-        {"id": "hsd", "label": "HS D", "category": "Hörsaal", "query_term": "Hörsaal D", "display_order": 5},
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 11},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 12},
-        {"id": "kapelle", "label": "Alte Kapelle", "category": "Hörsaal", "query_term": "Alte Kapelle", "display_order": 21},
-        {"id": "aula", "label": "Aula", "category": "Hörsaal", "query_term": "Aula", "display_order": 22},
+        {"id": "hsa", "label": "HS A", "category": "Lecture Hall", "query_term": "Hörsaal A", "display_order": 1},
+        {"id": "hsb", "label": "HS B", "category": "Lecture Hall", "query_term": "Hörsaal B", "display_order": 2},
+        {"id": "hsc1", "label": "HS C1", "category": "Lecture Hall", "query_term": "Hörsaal C1", "display_order": 3},
+        {"id": "hsc2", "label": "HS C2", "category": "Lecture Hall", "query_term": "Hörsaal C2", "display_order": 4},
+        {"id": "hsd", "label": "HS D", "category": "Lecture Hall", "query_term": "Hörsaal D", "display_order": 5},
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 11},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 12},
+        {"id": "alte-kapelle", "label": "Alte Kapelle", "category": "Lecture Hall", "query_term": "Alte Kapelle", "display_order": 21},
+        {"id": "aula", "label": "Aula", "category": "Lecture Hall", "query_term": "Aula", "display_order": 22},
     ],
     # 7. UBB Biologiezentrum (Djerassiplatz 1)
     "ubb": [
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 1},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 2},
-        {"id": "hs3", "label": "HS 3", "category": "Hörsaal", "query_term": "Hörsaal 3", "display_order": 3},
-        {"id": "hs4", "label": "HS 4", "category": "Hörsaal", "query_term": "Hörsaal 4", "display_order": 4},
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 15)],
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 1},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 2},
+        {"id": "hs3", "label": "HS 3", "category": "Lecture Hall", "query_term": "Hörsaal 3", "display_order": 3},
+        {"id": "hs4", "label": "HS 4", "category": "Lecture Hall", "query_term": "Hörsaal 4", "display_order": 4},
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 15)],
     ],
     # 8. UZA II (Josef-Holaubek-Platz 2 / Althanstraße 14)
     "uza2": [
-        *[{"id": f"hs{i}", "label": f"HS {i}", "category": "Hörsaal", "query_term": f"Hörsaal {i}", "display_order": i} for i in range(1, 9)],
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 20 + i} for i in range(1, 11)],
-        {"id": "pc1", "label": "PC 1", "category": "PC-Raum", "query_term": "PC-Raum 1", "display_order": 41},
-        {"id": "pc2", "label": "PC 2", "category": "PC-Raum", "query_term": "PC-Raum 2", "display_order": 42},
+        *[{"id": f"hs{i}", "label": f"HS {i}", "category": "Lecture Hall", "query_term": f"Hörsaal {i}", "display_order": i} for i in range(1, 9)],
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 20 + i} for i in range(1, 11)],
+        {"id": "pc1", "label": "PC 1", "category": "Computer Lab", "query_term": "PC-Raum 1", "display_order": 41},
+        {"id": "pc2", "label": "PC 2", "category": "Computer Lab", "query_term": "PC-Raum 2", "display_order": 42},
     ],
-    # 9. Fakultät für Chemie (Währinger Straße 38-42)
+    # 9. Faculty of Chemistry (Währinger Straße 38-42)
     "chemie": [
-        {"id": "auer", "label": "Auer-v-Welsbach HS", "category": "Hörsaal", "query_term": "Carl-Auer-von-Welsbach-Hörsaal", "display_order": 1},
-        {"id": "spaeth", "label": "Ernst-Späth HS", "category": "Hörsaal", "query_term": "Ernst-Späth-Hörsaal", "display_order": 2},
-        {"id": "kl_hs", "label": "Kleiner Hörsaal", "category": "Hörsaal", "query_term": "Kleiner Hörsaal", "display_order": 3},
-        {"id": "gr_hs", "label": "Großer Hörsaal", "category": "Hörsaal", "query_term": "Großer Hörsaal", "display_order": 4},
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 11},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 12},
+        {"id": "auer", "label": "Auer-v-Welsbach HS", "category": "Lecture Hall", "query_term": "Carl-Auer-von-Welsbach-Hörsaal", "display_order": 1},
+        {"id": "spaeth", "label": "Ernst-Späth HS", "category": "Lecture Hall", "query_term": "Ernst-Späth-Hörsaal", "display_order": 2},
+        {"id": "kleiner-hoersaal", "label": "Kleiner Hörsaal", "category": "Lecture Hall", "query_term": "Kleiner Hörsaal", "display_order": 3},
+        {"id": "grosser-hoersaal", "label": "Großer Hörsaal", "category": "Lecture Hall", "query_term": "Großer Hörsaal", "display_order": 4},
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 11},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 12},
     ],
-    # 10. Fakultät für Physik (Boltzmanngasse 5 / Strudlhofgasse 4)
+    # 10. Faculty of Physics (Boltzmanngasse 5 / Strudlhofgasse 4)
     "physik_boltzmann": [
-        {"id": "doppler", "label": "Doppler HS", "category": "Hörsaal", "query_term": "Christian Doppler", "display_order": 1},
-        {"id": "meitner", "label": "Lise Meitner HS", "category": "Hörsaal", "query_term": "Lise Meitner", "display_order": 2},
-        {"id": "hess", "label": "Hess HS", "category": "Hörsaal", "query_term": "Victor Franz Hess", "display_order": 3},
-        {"id": "schroedinger", "label": "Schrödinger HS", "category": "Hörsaal", "query_term": "Erwin Schrödinger", "display_order": 4},
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 11},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 12},
+        {"id": "doppler", "label": "Doppler HS", "category": "Lecture Hall", "query_term": "Christian Doppler", "display_order": 1},
+        {"id": "meitner", "label": "Lise Meitner HS", "category": "Lecture Hall", "query_term": "Lise Meitner", "display_order": 2},
+        {"id": "hess", "label": "Hess HS", "category": "Lecture Hall", "query_term": "Victor Franz Hess", "display_order": 3},
+        {"id": "schroedinger", "label": "Schrödinger HS", "category": "Lecture Hall", "query_term": "Erwin Schrödinger", "display_order": 4},
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 11},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 12},
     ],
-    # 11. Fakultät für Psychologie (Kolingasse 14-16 / Liebiggasse 5)
+    # 11. Faculty of Psychology (Kolingasse 14-16 / Liebiggasse 5)
     "psychologie": [
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 1},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 2},
-        {"id": "hs3", "label": "HS 3", "category": "Hörsaal", "query_term": "Hörsaal 3", "display_order": 3},
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 9)],
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 1},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 2},
+        {"id": "hs3", "label": "HS 3", "category": "Lecture Hall", "query_term": "Hörsaal 3", "display_order": 3},
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 9)],
     ],
-    # 12. Sportwissenschaft (Auf der Schmelz 6)
+    # 12. Center for Sport Science (Auf der Schmelz 6)
     "sport": [
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 1},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 2},
-        {"id": "sr1", "label": "SR 1", "category": "Seminarraum", "query_term": "Seminarraum 1", "display_order": 11},
-        {"id": "sr2", "label": "SR 2", "category": "Seminarraum", "query_term": "Seminarraum 2", "display_order": 12},
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 1},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 2},
+        {"id": "sr1", "label": "SR 1", "category": "Seminar Room", "query_term": "Seminarraum 1", "display_order": 11},
+        {"id": "sr2", "label": "SR 2", "category": "Seminar Room", "query_term": "Seminarraum 2", "display_order": 12},
     ],
-    # 13. Theologie (Schenkenstraße 8-10)
+    # 13. Faculties of Theology (Schenkenstraße 8-10)
     "theologie": [
-        {"id": "hs1", "label": "HS 1", "category": "Hörsaal", "query_term": "Hörsaal 1", "display_order": 1},
-        {"id": "hs2", "label": "HS 2", "category": "Hörsaal", "query_term": "Hörsaal 2", "display_order": 2},
-        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminarraum", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 6)],
+        {"id": "hs1", "label": "HS 1", "category": "Lecture Hall", "query_term": "Hörsaal 1", "display_order": 1},
+        {"id": "hs2", "label": "HS 2", "category": "Lecture Hall", "query_term": "Hörsaal 2", "display_order": 2},
+        *[{"id": f"sr{i}", "label": f"SR {i}", "category": "Seminar Room", "query_term": f"Seminarraum {i}", "display_order": 10 + i} for i in range(1, 6)],
     ],
 }
 
@@ -289,6 +310,18 @@ SEEDED_ROOMS_MAP = {
 def normalize_room_id(slug_or_id: str) -> str:
     """Normalizes various room ID formats into a canonical ID (e.g. 'hoersaal-1' -> 'hs1')."""
     s = slug_or_id.lower().strip()
+    if ('gross' in s or 'gr_' in s or 'grfest' in s) and 'festsaal' in s:
+        return 'grosser-festsaal'
+    if ('klein' in s or 'kl_' in s or 'klfest' in s) and 'festsaal' in s:
+        return 'kleiner-festsaal'
+    if ('gross' in s or 'gr_' in s or 'grhs' in s) and ('hs' in s or 'hoersaal' in s or 'hörsaal' in s):
+        return 'grosser-hoersaal'
+    if ('klein' in s or 'kl_' in s or 'klhs' in s) and ('hs' in s or 'hoersaal' in s or 'hörsaal' in s):
+        return 'kleiner-hoersaal'
+    if 'kapelle' in s:
+        return 'alte-kapelle'
+    if 'big' in s and ('hoersaal' in s or 'hörsaal' in s or 'hs' in s):
+        return 'big-hoersaal'
     s = re.sub(r'^(?:hoersaal|hörsaal)[-_]?', 'hs', s)
     s = re.sub(r'^(?:seminarraum)[-_]?', 'sr', s)
     s = re.sub(r'^(?:pc[-_]unterrichtsraum|pc[-_]raum)[-_]?', 'pc', s)
@@ -299,16 +332,17 @@ def normalize_room_id(slug_or_id: str) -> str:
 def seed_database_if_empty(force: bool = False):
     """
     Populates or updates all campuses and rooms across all faculties.
-    Cleans up any legacy un-normalized duplicate room slugs.
+    Cleans up legacy duplicate entries and guarantees canonical IDs.
     """
     with get_connection() as conn:
         cursor = conn.cursor()
         now_iso = datetime.now(timezone.utc).isoformat()
         
-        # Clean up legacy un-normalized crawled slugs
+        # Clean up legacy un-normalized and duplicated slugs
         cursor.execute("""
             DELETE FROM rooms
-            WHERE id LIKE 'hoersaal-%'
+            WHERE id IN ('gr_festsaal', 'grfestsaal', 'kl_festsaal', 'klfestsaal', 'kapelle', 'gr_hs', 'grhs', 'kl_hs', 'klhs')
+               OR id LIKE 'hoersaal-%'
                OR id LIKE 'seminarraum-%'
                OR id LIKE 'pc-raum-%'
                OR id LIKE 'pc-unterrichtsraum-%'
@@ -341,7 +375,16 @@ def seed_database_if_empty(force: bool = False):
                         display_order = excluded.display_order,
                         last_synced = excluded.last_synced
                 """, (canonical_id, campus_id, r["label"], r["category"], r["query_term"], r["display_order"], now_iso))
-                
+        
+        # Ensure zero duplicate labels within the same campus
+        cursor.execute("""
+            DELETE FROM rooms
+            WHERE rowid NOT IN (
+                SELECT MIN(rowid)
+                FROM rooms
+                GROUP BY campus_id, label
+            )
+        """)
         conn.commit()
 
 
@@ -416,31 +459,61 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
                 if campus_slug not in valid_campuses:
                     continue
                 
-                category = "Raum"
+                category = "Hall"
                 label = room_slug.replace("-", " ").title()
                 query_term = label
                 display_order = 100
                 
-                if "hoersaal" in room_slug:
-                    category = "Hörsaal"
+                if "big-hoersaal" in room_slug or "bighoersaal" in room_slug:
+                    category = "Lecture Hall"
+                    label = "BIG-Hörsaal"
+                    query_term = "BIG-Hörsaal"
+                    display_order = 2
+                elif "grosser-festsaal" in room_slug:
+                    category = "Lecture Hall"
+                    label = "Großer Festsaal"
+                    query_term = "Großer Festsaal"
+                    display_order = 3
+                elif "kleiner-festsaal" in room_slug:
+                    category = "Lecture Hall"
+                    label = "Kleiner Festsaal"
+                    query_term = "Kleiner Festsaal"
+                    display_order = 4
+                elif "alte-kapelle" in room_slug or "kapelle" in room_slug:
+                    category = "Lecture Hall"
+                    label = "Alte Kapelle"
+                    query_term = "Alte Kapelle"
+                    display_order = 21
+                elif "grosser-hoersaal" in room_slug:
+                    category = "Lecture Hall"
+                    label = "Großer Hörsaal"
+                    query_term = "Großer Hörsaal"
+                    display_order = 4
+                elif "kleiner-hoersaal" in room_slug:
+                    category = "Lecture Hall"
+                    label = "Kleiner Hörsaal"
+                    query_term = "Kleiner Hörsaal"
+                    display_order = 3
+                elif "hoersaal" in room_slug:
+                    category = "Lecture Hall"
                     num = re.sub(r'[^0-9a-zA-Z]', '', room_slug.replace("hoersaal", ""))
                     label = f"HS {num}".strip()
                     query_term = f"Hörsaal {num}".strip()
                     display_order = 10 + (int(num) if num.isdigit() else 0)
                 elif "seminarraum" in room_slug:
-                    category = "Seminarraum"
+                    category = "Seminar Room"
                     num = re.sub(r'[^0-9a-zA-Z]', '', room_slug.replace("seminarraum", ""))
                     label = f"SR {num}".strip()
                     query_term = f"Seminarraum {num}".strip()
                     display_order = 50 + (int(num) if num.isdigit() else 0)
                 elif "pc-raum" in room_slug or "pc-unterrichtsraum" in room_slug:
-                    category = "PC-Raum"
+                    category = "Computer Lab"
                     num = re.sub(r'[^0-9a-zA-Z]', '', room_slug.replace("pc-unterrichtsraum", "").replace("pc-raum", ""))
                     label = f"PC {num}".strip()
                     query_term = f"PC-Unterrichtsraum {num}".strip()
                     display_order = 80 + (int(num) if num.isdigit() else 0)
                 elif "audimax" in room_slug:
-                    category = "Hörsaal"
+                    category = "Lecture Hall"
                     label = "Audimax"
                     query_term = "Audimax"
                     display_order = 1
@@ -458,6 +531,15 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
                 """, (canonical_id, campus_slug, label, category, query_term, display_order, now_iso))
                 discovered_count += 1
             
+            # Remove any duplicates after crawl
+            cursor.execute("""
+                DELETE FROM rooms
+                WHERE rowid NOT IN (
+                    SELECT MIN(rowid)
+                    FROM rooms
+                    GROUP BY campus_id, label
+                )
+            """)
             conn.commit()
             set_meta("last_room_sync", now_iso)
             
