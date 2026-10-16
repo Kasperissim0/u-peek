@@ -15,13 +15,17 @@ except ImportError:
     import pytz
     VIENNA_TZ = pytz.timezone("Europe/Vienna")
 
+GERMAN_WEEKDAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+
 
 def build_ufind_highlight_url(url: str, location: str, event_dt: Optional[datetime] = None) -> str:
     """
     Builds a u:find URL equipped with a W3C Text Fragment (#:~:text=...)
-    to scroll to and visually highlight the specific event / room in the browser.
+    to scroll to and visually highlight the specific event entry in the browser.
+    Uses the appointment's date/weekday as textStart and room as textEnd so that
+    the browser highlights the exact table entry for that session.
     Example:
-    https://ufind.univie.ac.at/de/course.html?lv=220067&semester=2026W#gr3:~:text=Seminarraum%206%2C%20Kolingasse%2014-16%2C%20EG00
+    https://ufind.univie.ac.at/de/course.html?lv=052618&semester=2026W#gr1:~:text=Montag%2019.10.,H%C3%B6rsaal%203%2C%20W%C3%A4hringer%20Stra%C3%9Fe%2029%203.OG
     """
     if not url:
         return ""
@@ -30,12 +34,20 @@ def build_ufind_highlight_url(url: str, location: str, event_dt: Optional[dateti
         
     base_url = url.split(":~:text=")[0]
     clean_loc = location.replace('\\,', ',').replace('\n', ' ').strip()
-    encoded_fragment = urllib.parse.quote(clean_loc, safe='')
+    encoded_loc = urllib.parse.quote(clean_loc, safe='')
     
-    if "#" in base_url:
-        return f"{base_url}:~:text={encoded_fragment}"
+    if event_dt:
+        weekday = GERMAN_WEEKDAYS[event_dt.weekday()]
+        date_str = f"{event_dt.day:02d}.{event_dt.month:02d}."
+        text_start = urllib.parse.quote(f"{weekday} {date_str}", safe='')
+        fragment = f":~:text={text_start},{encoded_loc}"
     else:
-        return f"{base_url}#:~:text={encoded_fragment}"
+        fragment = f":~:text={encoded_loc}"
+        
+    if "#" in base_url:
+        return f"{base_url}{fragment}"
+    else:
+        return f"{base_url}#{fragment}"
 
 
 def parse_ics_datetime(dt_str: str) -> Optional[datetime]:
