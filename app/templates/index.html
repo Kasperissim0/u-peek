@@ -147,20 +147,16 @@
             </div>
           </div>
           
-          <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1 border-t border-slate-800">
-            <div>
-              <span class="text-slate-500 block text-[10px]">Time Slot:</span>
-              <span id="courseTimeSlot" class="font-mono font-medium"></span>
-            </div>
-            <div>
-              <span class="text-slate-500 block text-[10px]">Location:</span>
-              <span id="courseLocation" class="truncate block"></span>
-            </div>
+          <div class="pt-2 border-t border-slate-800 text-center text-xs">
+            <span class="text-slate-400">Duration: </span>
+            <span id="courseTimeSlot" class="font-mono font-bold text-slate-100"></span>
           </div>
 
-          <a id="courseUfindLink" href="#" target="_blank" class="mt-2 inline-flex items-center text-xs font-medium text-indigo-400 hover:text-indigo-300 transition">
-            Open in Course Directory (u:find) &rarr;
-          </a>
+          <div class="text-center pt-1">
+            <a id="courseUfindLink" href="#" target="_blank" class="inline-flex items-center text-xs font-medium text-indigo-400 hover:text-indigo-300 transition">
+              Open in Course Directory (u:find) &rarr;
+            </a>
+          </div>
         </div>
 
         <!-- Free / Vacant Message -->
@@ -392,7 +388,6 @@
         document.getElementById("courseCodeType").textContent = `${data.current_course.code} • ${data.current_course.type}`;
         document.getElementById("courseTitle").textContent = data.current_course.title;
         document.getElementById("courseTimeSlot").textContent = `${data.current_course.start} - ${data.current_course.end}`;
-        document.getElementById("courseLocation").textContent = data.current_course.location || "Vienna";
         
         const link = document.getElementById("courseUfindLink");
         if (data.current_course.url) {
