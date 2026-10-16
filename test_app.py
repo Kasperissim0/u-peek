@@ -42,9 +42,10 @@ def run_tests():
     w29_labels = [r["label"] for r in w29_rooms]
     assert "PC 1" in w29_labels, "PC 1 missing from W29"
     assert "PC 2" in w29_labels, "PC 2 missing from W29"
+    assert "PC 6" in w29_labels, "PC 6 missing from W29"
     assert "HS 1" in w29_labels, "HS 1 missing from W29"
     assert "SR 6" in w29_labels, "SR 6 missing from W29"
-    print(f"   ✓ W29 rooms: {len(w29_rooms)} (including PC 1 - PC 5, SR 1 - SR 12, HS 1 - HS 3)")
+    print(f"   ✓ W29 rooms: {len(w29_rooms)} (including PC 1 - PC 6, SR 1 - SR 12, HS 1 - HS 3)")
 
     print("\n3. Verifying Hauptgebäude (Main Building) Rooms & Zero Duplicates...")
     hg_rooms = get_rooms_for_campus("hauptgebaeude")

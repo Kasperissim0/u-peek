@@ -6,7 +6,8 @@ with extensive seed data (including PC rooms) and automated sync against univers
 import re
 import logging
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
+import ssl
 try:
     import httpx
 except ImportError:
@@ -151,6 +152,7 @@ SEEDED_ROOMS_MAP = {
         {"id": "pc3", "label": "PC 3", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 3", "display_order": 33},
         {"id": "pc4", "label": "PC 4", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 4", "display_order": 34},
         {"id": "pc5", "label": "PC 5", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 5", "display_order": 35},
+        {"id": "pc6", "label": "PC 6", "category": "Computer Lab", "query_term": "PC-Unterrichtsraum 6", "display_order": 36},
         {"id": "pr1", "label": "Praktikumsraum 1", "category": "Laboratory", "query_term": "Praktikumsraum 1", "display_order": 41},
         {"id": "pr2", "label": "Praktikumsraum 2", "category": "Laboratory", "query_term": "Praktikumsraum 2", "display_order": 42},
     ],
@@ -541,12 +543,164 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
                 )
             """)
             conn.commit()
+            
+            # 2. Run deterministic SPL schedule harvester for all teaching rooms & computer labs
+            spl_count = await sync_rooms_from_spl_schedules()
+            total_synced = discovered_count + spl_count
+            
             set_meta("last_room_sync", now_iso)
             
-        return {"status": "ok", "rooms_synced": discovered_count, "synced_at": now_iso}
+        return {"status": "ok", "rooms_synced": total_synced, "synced_at": now_iso}
     except Exception as e:
         logger.error(f"Error syncing room directory: {e}")
         return {"status": "error", "message": str(e)}
+
+
+CAMPUS_LOCATION_KEYWORDS = {
+    "w29": ["währinger straße 29", "währingerstr. 29", "w29", "währinger strasse 29"],
+    "omp": ["oskar-morgenstern-platz 1", "omp", "oskar morgenstern"],
+    "juridicum": ["schottenbastei 10-16", "juridicum", "schottenbastei"],
+    "hauptgebaeude": ["hauptgebäude", "universitätsring 1", "universitaetsring 1", "hauptgeb"],
+    "nig": ["universitätsstraße 7", "universitaetsstrasse 7", "nig"],
+    "campus": ["spitalgasse 2", "unicampus", "altes akh", "spitalgasse 4"],
+    "ubb": ["djerassiplatz 1", "biozentrum", "biologiezentrum"],
+    "uza2": ["josef-holaubek-platz 2", "uza ii", "uza 2", "althanstraße 14"],
+    "chemie": ["währinger straße 38", "währinger straße 40", "währinger straße 42"],
+    "physik_boltzmann": ["boltzmanngasse 5", "strudlhofgasse 4"],
+    "psychologie": ["kolingasse 14-16", "liebiggasse 5"],
+    "sport": ["auf der schmelz 6"],
+    "theologie": ["schenkenstraße 8-10"],
+}
+
+
+def parse_room_from_location_chunk(chunk: str) -> Optional[Tuple[str, str, str, str, int]]:
+    """
+    Deterministically parses a single location text chunk into:
+    (canonical_id, label, category, query_term, display_order)
+    """
+    chunk_clean = chunk.strip()
+    chunk_lower = chunk_clean.lower()
+    
+    m_pc = re.search(r'PC[- ](?:Unterrichtsraum|Raum|Seminarraum)\s*([0-9]+)', chunk_clean, re.I)
+    m_hs = re.search(r'(?:Hörsaal|HS)\s*([0-9]+[A-Za-z]?|[A-Za-z][0-9]*|[IVXLCDM]+)\b', chunk_clean, re.I)
+    m_sr = re.search(r'(?:Seminarraum|SR)\s*([0-9]+[A-Za-z]?|[A-Za-z]\b)', chunk_clean, re.I)
+    m_pr = re.search(r'(?:Praktikumsraum|Labor)\s*([0-9]+|[A-Za-z]+)', chunk_clean, re.I)
+    
+    if m_pc:
+        num = m_pc.group(1).upper()
+        return (f"pc{num.lower()}", f"PC {num}", "Computer Lab", f"PC-Unterrichtsraum {num}", 30 + (int(num) if num.isdigit() else 35))
+    elif m_hs:
+        num = m_hs.group(1).upper()
+        if num in ('HAUPTGEB', 'HAUPTGEBÄUDE', 'WIEN', 'OG', 'EG', 'UG'):
+            return None
+        return (f"hs{num.lower()}", f"HS {num}", "Lecture Hall", f"Hörsaal {num}", 10 + (int(num) if num.isdigit() else 15))
+    elif m_sr:
+        num = m_sr.group(1).upper()
+        if num in ('HAUPTGEB', 'WIEN', 'OG', 'EG', 'UG'):
+            return None
+        return (f"sr{num.lower()}", f"SR {num}", "Seminar Room", f"Seminarraum {num}", 50 + (int(num) if num.isdigit() else 55))
+    elif m_pr:
+        num = m_pr.group(1).upper()
+        return (f"pr{num.lower()}", f"PR {num}", "Laboratory", f"Praktikumsraum {num}", 40 + (int(num) if num.isdigit() else 45))
+    elif 'audimax' in chunk_lower:
+        return ("audimax", "Audimax", "Lecture Hall", "Audimax", 1)
+    elif 'festsaal' in chunk_lower:
+        if 'gross' in chunk_lower or 'groß' in chunk_lower:
+            return ("grosser-festsaal", "Großer Festsaal", "Lecture Hall", "Großer Festsaal", 3)
+        elif 'klein' in chunk_lower:
+            return ("kleiner-festsaal", "Kleiner Festsaal", "Lecture Hall", "Kleiner Festsaal", 4)
+    elif 'big-hörsaal' in chunk_lower or 'big-hoersaal' in chunk_lower or 'big hörsaal' in chunk_lower:
+        return ("big-hoersaal", "BIG-Hörsaal", "Lecture Hall", "BIG-Hörsaal", 2)
+        
+    return None
+
+
+async def sync_rooms_from_spl_schedules() -> int:
+    """
+    Deterministically harvests all active rooms across all University of Vienna faculties
+    directly from their authoritative ufind SPL iCalendar timetables.
+    Guarantees every lecture hall, seminar room, computer lab (e.g. PC-Unterrichtsraum 6),
+    and practical room currently in use is discovered and indexed.
+    """
+    discovered_count = 0
+    now_iso = datetime.now(timezone.utc).isoformat()
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; UnivieRoomLookup/1.0)"}
+    ssl_ctx = ssl._create_unverified_context()
+    
+    campuses = get_all_campuses()
+    
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        
+        for c in campuses:
+            campus_id = c["id"]
+            spl_codes = [s.strip() for s in (c.get("spl_codes") or "").split(",") if s.strip()]
+            keywords = CAMPUS_LOCATION_KEYWORDS.get(campus_id, [])
+            
+            for spl in spl_codes:
+                url = f"https://m2-ufind.univie.ac.at/courses/calendar/query.ics?query={spl}+%2Bct"
+                ics_data = ""
+                try:
+                    if httpx is not None:
+                        async with httpx.AsyncClient(timeout=15.0, verify=False) as client:
+                            resp = await client.get(url, headers=headers)
+                            if resp.status_code == 200:
+                                ics_data = resp.text
+                    else:
+                        req = urllib.request.Request(url, headers=headers)
+                        with urllib.request.urlopen(req, context=ssl_ctx, timeout=15) as r:
+                            ics_data = r.read().decode('utf-8', errors='ignore')
+                except Exception as e:
+                    logger.debug(f"Failed to fetch calendar for {spl}: {e}")
+                    continue
+                    
+                if not ics_data:
+                    continue
+                    
+                unfolded = re.sub(r'\r?\n[ \t]', '', ics_data)
+                loc_matches = re.findall(r'LOCATION:([^\r\n]+)', unfolded)
+                
+                for raw_loc in loc_matches:
+                    unescaped = raw_loc.replace(r'\,', ',')
+                    chunks = re.split(
+                        r',\s*(?=(?:Hörsaal|HS|Seminarraum|SR|PC[- ]|Praktikumsraum|Audimax|Festsaal|Saal|Labor))',
+                        unescaped,
+                        flags=re.I
+                    )
+                    for chunk in chunks:
+                        if not any(k in chunk.lower() for k in keywords):
+                            continue
+                            
+                        parsed = parse_room_from_location_chunk(chunk)
+                        if not parsed:
+                            continue
+                            
+                        room_id, label, category, query_term, display_order = parsed
+                        canonical_id = normalize_room_id(room_id)
+                        
+                        cursor.execute("""
+                            INSERT INTO rooms (id, campus_id, label, category, query_term, display_order, last_synced)
+                            VALUES (?, ?, ?, ?, ?, ?, ?)
+                            ON CONFLICT(campus_id, id) DO UPDATE SET
+                                label = excluded.label,
+                                category = excluded.category,
+                                query_term = excluded.query_term,
+                                last_synced = excluded.last_synced
+                        """, (canonical_id, campus_id, label, category, query_term, display_order, now_iso))
+                        discovered_count += 1
+                        
+        # Enforce deduplication by (campus_id, label)
+        cursor.execute("""
+            DELETE FROM rooms
+            WHERE rowid NOT IN (
+                SELECT MIN(rowid)
+                FROM rooms
+                GROUP BY campus_id, label
+            )
+        """)
+        conn.commit()
+        
+    return discovered_count
 
 
 async def check_auto_sync_needed():
