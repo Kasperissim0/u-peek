@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CAMPUSES = [
     {
         "id": "w29",
-        "name": "Währinger Straße 29 (Computer Science & Media)",
+        "name": "W29: Währinger Straße 29 (Computer Science & Media)",
         "address": "Währinger Straße 29, 1090 Wien",
         "query_prefix": "Währinger Straße 29",
         "spl_codes": "spl5,spl22",
@@ -29,7 +29,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "hauptgebaeude",
-        "name": "Universitätsring 1 (Humanities)",
+        "name": "Hauptgebäude: Universitätsring 1 (Humanities)",
         "address": "Universitätsring 1, 1010 Wien",
         "query_prefix": "Hauptgebäude",
         "spl_codes": "spl6,spl7,spl9,spl10,spl1",
@@ -37,7 +37,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "campus",
-        "name": "Spitalgasse 2 (Cultural Studies & Languages)",
+        "name": "Campus Altes AKH: Spitalgasse 2 (Cultural Studies & Languages)",
         "address": "Spitalgasse 2, 1090 Wien",
         "query_prefix": "Spitalgasse 2 Hof",
         "spl_codes": "spl3,spl6,spl12",
@@ -45,7 +45,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "omp",
-        "name": "Oskar-Morgenstern-Platz 1 (Mathematics & Economics)",
+        "name": "OMP: Oskar-Morgenstern-Platz 1 (Mathematics & Economics)",
         "address": "Oskar-Morgenstern-Platz 1, 1090 Wien",
         "query_prefix": "Oskar-Morgenstern-Platz 1",
         "spl_codes": "spl25,spl4",
@@ -53,7 +53,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "juridicum",
-        "name": "Schottenbastei 10-16 (Law)",
+        "name": "Juridicum: Schottenbastei 10-16 (Law)",
         "address": "Schottenbastei 10-16, 1010 Wien",
         "query_prefix": "Schottenbastei 10-16",
         "spl_codes": "spl34",
@@ -61,7 +61,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "nig",
-        "name": "Universitätsstraße 7 (Social Sciences & Philosophy)",
+        "name": "NIG: Universitätsstraße 7 (Social Sciences & Philosophy)",
         "address": "Universitätsstraße 7, 1010 Wien",
         "query_prefix": "Universitätsstraße 7",
         "spl_codes": "spl2,spl20,spl21,spl24",
@@ -69,7 +69,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "ubb",
-        "name": "Djerassiplatz 1 (Life Sciences & Biology)",
+        "name": "UBB: Djerassiplatz 1 (Life Sciences & Biology)",
         "address": "Djerassiplatz 1, 1030 Wien",
         "query_prefix": "Djerassiplatz 1",
         "spl_codes": "spl30,spl31",
@@ -77,7 +77,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "uza2",
-        "name": "Josef-Holaubek-Platz 2 (Pharmacy & Geosciences)",
+        "name": "UZA II: Josef-Holaubek-Platz 2 (Pharmacy & Geosciences)",
         "address": "Josef-Holaubek-Platz 2, 1090 Wien",
         "query_prefix": "Josef-Holaubek-Platz 2",
         "spl_codes": "spl28,spl29",
@@ -85,7 +85,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "chemie",
-        "name": "Währinger Straße 38-42 (Chemistry)",
+        "name": "Chemie: Währinger Straße 38-42 (Chemistry)",
         "address": "Währinger Straße 38-42, 1090 Wien",
         "query_prefix": "Währinger Straße 38",
         "spl_codes": "spl27",
@@ -93,7 +93,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "physik_boltzmann",
-        "name": "Boltzmanngasse 5 (Physics)",
+        "name": "Physik: Boltzmanngasse 5 (Physics)",
         "address": "Boltzmanngasse 5, 1090 Wien",
         "query_prefix": "Boltzmanngasse 5",
         "spl_codes": "spl26",
@@ -101,7 +101,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "psychologie",
-        "name": "Kolingasse 14-16 (Psychology)",
+        "name": "Psychologie: Kolingasse 14-16 (Psychology)",
         "address": "Kolingasse 14-16, 1090 Wien",
         "query_prefix": "Kolingasse 14-16",
         "spl_codes": "spl32",
@@ -109,7 +109,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "sport",
-        "name": "Auf der Schmelz 6 (Sport Science)",
+        "name": "USZ: Auf der Schmelz 6 (Sport Science)",
         "address": "Auf der Schmelz 6, 1150 Wien",
         "query_prefix": "Auf der Schmelz 6",
         "spl_codes": "spl33",
@@ -117,7 +117,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "theologie",
-        "name": "Schenkenstraße 8-10 (Theology)",
+        "name": "Theologie: Schenkenstraße 8-10 (Theology)",
         "address": "Schenkenstraße 8-10, 1010 Wien",
         "query_prefix": "Schenkenstraße 8-10",
         "spl_codes": "spl1,spl2",
