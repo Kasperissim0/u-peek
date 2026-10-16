@@ -38,7 +38,7 @@ async def fetch_raw_ics(query_str: str, force_refresh: bool = False) -> str:
     encoded_query = urllib.parse.quote_plus(query_str)
     url = f"{UFIND_CALENDAR_BASE}?query={encoded_query}"
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; UnivieRoomLookup/1.0)",
+        "User-Agent": "u-peek/1.0 (Student Project; https://github.com/Kasperissim0/u-peek)",
         "Accept": "text/calendar, text/plain, */*"
     }
     

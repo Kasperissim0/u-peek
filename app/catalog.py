@@ -430,7 +430,7 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
     all university buildings and rooms, inserting new rooms and updating timestamps.
     """
     url = "https://event.univie.ac.at/services/raumuebersicht"
-    headers = {"User-Agent": "Mozilla/5.0 (compatible; UnivieRoomLookup/1.0)"}
+    headers = {"User-Agent": "u-peek/1.0 (Student Project; https://github.com/Kasperissim0/u-peek)"}
     
     discovered_count = 0
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -624,7 +624,7 @@ async def sync_rooms_from_spl_schedules() -> int:
     """
     discovered_count = 0
     now_iso = datetime.now(timezone.utc).isoformat()
-    headers = {"User-Agent": "Mozilla/5.0 (compatible; UnivieRoomLookup/1.0)"}
+    headers = {"User-Agent": "u-peek/1.0 (Student Project; https://github.com/Kasperissim0/u-peek)"}
     ssl_ctx = ssl._create_unverified_context()
     
     campuses = get_all_campuses()
