@@ -1,4 +1,4 @@
-# u:peek • University of Vienna Room Lookup
+# u:peek • Room Lookup Tool for the University of Vienna
 
 > **Live Instance**: [https://u-peek.onrender.com](https://u-peek.onrender.com)  
 > Mobile-first web app and API to instantly peek into any University of Vienna lecture hall, seminar room, or computer lab to see **what is happening right now and next**.

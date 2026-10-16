@@ -45,7 +45,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="u:peek • Univie Room Lookup", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="u:peek • Room Lookup Tool for the University of Vienna", version="1.0.0", lifespan=lifespan)
 
 # Allow CORS for mobile web or third-party callers
 app.add_middleware(
