@@ -9,8 +9,9 @@ from datetime import datetime
 from typing import Optional
 
 from fastapi import FastAPI, Query, HTTPException, BackgroundTasks
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.db import init_db
 from app.catalog import (
@@ -44,7 +45,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="UniWien Room Lookup", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="u:peek • Univie Room Lookup", version="1.0.0", lifespan=lifespan)
 
 # Allow CORS for mobile web or third-party callers
 app.add_middleware(
@@ -54,6 +55,20 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static directory for assets (logos, icons)
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    """Serves the Zuckerborg logo as favicon."""
+    favicon_path = os.path.join(os.path.dirname(__file__), "static", "zuckerborg.jpg")
+    if os.path.exists(favicon_path):
+        return FileResponse(favicon_path, media_type="image/jpeg")
+    return HTMLResponse(status_code=404)
 
 
 @app.get("/", response_class=HTMLResponse)
