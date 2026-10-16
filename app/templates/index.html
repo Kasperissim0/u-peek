@@ -54,9 +54,14 @@
       <div>
         <div class="flex items-center justify-between mb-1">
           <label class="text-xs font-medium text-slate-400">Date & Time</label>
-          <button id="resetNowBtn" class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 transition">
-            ● Use Current Time
-          </button>
+          <div class="flex items-center space-x-2.5">
+            <button id="pasteTimeBtn" type="button" title="Paste date/time (e.g. 2026-10-19 11:30)" class="text-[11px] font-semibold text-slate-400 hover:text-indigo-300 transition flex items-center space-x-0.5">
+              <span>📋 Paste</span>
+            </button>
+            <button id="resetNowBtn" type="button" class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300 transition">
+              ● Use Current Time
+            </button>
+          </div>
         </div>
         <input type="datetime-local" id="timeInput" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
       </div>
@@ -432,6 +437,78 @@
       }
     }
 
+    // Date & Time Paste Parser
+    function parsePastedDateTime(raw) {
+      if (!raw) return null;
+      const str = raw.trim();
+
+      // 1. Matches "YYYY-MM-DD HH:MM" or "YYYY-MM-DDTHH:MM" (e.g. from Next Lecture card)
+      const isoMatch = str.match(/(\d{4})-(\d{2})-(\d{2})[T\s](\d{2}):(\d{2})/);
+      if (isoMatch) {
+        return `${isoMatch[1]}-${isoMatch[2]}-${isoMatch[3]}T${isoMatch[4]}:${isoMatch[5]}`;
+      }
+
+      // 2. Matches "YYYY-MM-DD"
+      const dateOnlyMatch = str.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (dateOnlyMatch) {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        return `${dateOnlyMatch[1]}-${dateOnlyMatch[2]}-${dateOnlyMatch[3]}T${hh}:${mm}`;
+      }
+
+      // 3. Matches German format "DD.MM.YYYY HH:MM", "DD.MM. HH:MM", or "DD.MM.YYYY"
+      const deMatch = str.match(/(\d{1,2})\.(\d{1,2})\.(?:(\d{4}))?(?:[,\s]+(\d{1,2}):(\d{2}))?/);
+      if (deMatch) {
+        const now = new Date();
+        const y = deMatch[3] || String(now.getFullYear());
+        const m = deMatch[2].padStart(2, '0');
+        const d = deMatch[1].padStart(2, '0');
+        const hh = deMatch[4] ? deMatch[4].padStart(2, '0') : String(now.getHours()).padStart(2, '0');
+        const mm = deMatch[5] ? deMatch[5].padStart(2, '0') : String(now.getMinutes()).padStart(2, '0');
+        return `${y}-${m}-${d}T${hh}:${mm}`;
+      }
+
+      // 4. Matches Time only "HH:MM"
+      const timeMatch = str.match(/^(\d{1,2}):(\d{2})$/);
+      if (timeMatch) {
+        const currentVal = document.getElementById("timeInput").value;
+        const datePart = currentVal ? currentVal.slice(0, 10) : new Date().toISOString().slice(0, 10);
+        return `${datePart}T${timeMatch[1].padStart(2, '0')}:${timeMatch[2].padStart(2, '0')}`;
+      }
+
+      // 5. Fallback via native Date.parse
+      const parsed = Date.parse(str);
+      if (!isNaN(parsed)) {
+        const d = new Date(parsed);
+        const offsetMs = d.getTimezoneOffset() * 60000;
+        return new Date(d.getTime() - offsetMs).toISOString().slice(0, 16);
+      }
+
+      return null;
+    }
+
+    function applyPastedDateTime(text) {
+      const formatted = parsePastedDateTime(text);
+      if (formatted) {
+        const input = document.getElementById("timeInput");
+        input.value = formatted;
+        isLiveTime = false;
+        queryRoomStatus();
+        return true;
+      }
+      return false;
+    }
+
+    function handleTimePaste(e) {
+      const clipboardText = (e.clipboardData || window.clipboardData)?.getData("text");
+      if (clipboardText) {
+        if (applyPastedDateTime(clipboardText)) {
+          e.preventDefault();
+        }
+      }
+    }
+
     // Event Listeners
     document.getElementById("campusSelect").addEventListener("change", (e) => {
       currentCampusId = e.target.value;
@@ -446,6 +523,27 @@
     document.getElementById("timeInput").addEventListener("change", () => {
       isLiveTime = false;
       queryRoomStatus();
+    });
+
+    document.getElementById("timeInput").addEventListener("paste", handleTimePaste);
+
+    document.addEventListener("paste", (e) => {
+      if (document.activeElement === document.getElementById("timeInput")) {
+        handleTimePaste(e);
+      }
+    });
+
+    document.getElementById("pasteTimeBtn").addEventListener("click", async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (!applyPastedDateTime(text)) {
+          const manual = prompt("Paste date & time (e.g. 2026-10-19 11:30):", text || "");
+          if (manual) applyPastedDateTime(manual);
+        }
+      } catch (err) {
+        const manual = prompt("Paste date & time (e.g. 2026-10-19 11:30):");
+        if (manual) applyPastedDateTime(manual);
+      }
     });
 
     document.getElementById("resetNowBtn").addEventListener("click", () => {
