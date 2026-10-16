@@ -68,8 +68,8 @@ def run_tests():
     assert res_dbs["current_course"]["code"] == "051031-1", f"Expected 051031-1, got {res_dbs['current_course']['code']}"
     assert res_dbs["current_course"]["title"] == "Datenbanksysteme", f"Expected Datenbanksysteme, got {res_dbs['current_course']['title']}"
     assert res_dbs["next_course"]["title"] == "Technische Grundlagen der Informatik"
-    assert "Freitag-,16.10." in res_dbs["current_course"]["url"], f"Invalid highlight URL: {res_dbs['current_course']['url']}"
-    assert "Freitag-,16.10." in res_dbs["next_course"]["url"], f"Invalid next course highlight URL: {res_dbs['next_course']['url']}"
+    assert "N-,Freitag" in res_dbs["current_course"]["url"], f"Invalid highlight URL: {res_dbs['current_course']['url']}"
+    assert "N-,Freitag" in res_dbs["next_course"]["url"], f"Invalid next course highlight URL: {res_dbs['next_course']['url']}"
     print(f"   ✓ Status: {res_dbs['status']}")
     print(f"   ✓ Course: {res_dbs['current_course']['title']} ({res_dbs['current_course']['code']})")
     print(f"   ✓ Highlight URL: {res_dbs['current_course']['url']}")

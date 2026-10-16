@@ -21,17 +21,15 @@ GERMAN_WEEKDAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "S
 def build_ufind_highlight_url(url: str, location: str, event_dt: Optional[datetime] = None) -> str:
     """
     Builds a u:find URL equipped with a W3C Text Fragment (#:~:text=...)
-    to scroll to and visually highlight the specific event entry in the browser.
+    to scroll to and visually highlight the active appointment entry in the browser.
     
-    Uses W3C Text Fragment range with context:
-    - prefix: German weekday (e.g., Montag-,)
-    - textStart: Date (e.g., 19.10.)
-    - textEnd: Room Location (e.g., Hörsaal 2, Währinger Straße 29 2.OG)
+    Uses W3C Text Fragment range:
+    - prefix: N-, (targeting the 'nächster Termin' marker <abbr>N</abbr>)
+    - textStart: German weekday (e.g., Montag)
+    - textEnd: Room Location (e.g., Hörsaal 1, Währinger Straße 29 1.UG)
     
-    This avoids table-cell block boundary collisions in Chromium and skips
-    the top course summary header to highlight the exact table entry.
     Example:
-    https://ufind.univie.ac.at/de/course.html?lv=052612&semester=2026W#gr1:~:text=Montag-,19.10.,H%C3%B6rsaal%202%2C%20W%C3%A4hringer%20Stra%C3%9Fe%2029%202.OG
+    https://ufind.univie.ac.at/de/course.html?lv=051023&semester=2026W#gr1:~:text=N-,Montag,H%C3%B6rsaal%201%2C%20W%C3%A4hringer%20Stra%C3%9Fe%2029%201.UG
     """
     if not url:
         return ""
@@ -44,10 +42,8 @@ def build_ufind_highlight_url(url: str, location: str, event_dt: Optional[dateti
     
     if event_dt:
         weekday = GERMAN_WEEKDAYS[event_dt.weekday()]
-        date_str = f"{event_dt.day:02d}.{event_dt.month:02d}."
-        prefix = urllib.parse.quote(weekday, safe='')
-        text_start = urllib.parse.quote(date_str, safe='')
-        fragment = f":~:text={prefix}-,{text_start},{encoded_loc}"
+        encoded_weekday = urllib.parse.quote(weekday, safe='')
+        fragment = f":~:text=N-,{encoded_weekday},{encoded_loc}"
     else:
         fragment = f":~:text={encoded_loc}"
         
