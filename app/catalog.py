@@ -286,13 +286,33 @@ SEEDED_ROOMS_MAP = {
 }
 
 
+def normalize_room_id(slug_or_id: str) -> str:
+    """Normalizes various room ID formats into a canonical ID (e.g. 'hoersaal-1' -> 'hs1')."""
+    s = slug_or_id.lower().strip()
+    s = re.sub(r'^(?:hoersaal|hörsaal)[-_]?', 'hs', s)
+    s = re.sub(r'^(?:seminarraum)[-_]?', 'sr', s)
+    s = re.sub(r'^(?:pc[-_]unterrichtsraum|pc[-_]raum)[-_]?', 'pc', s)
+    s = re.sub(r'^(?:praktikumsraum)[-_]?', 'pr', s)
+    return re.sub(r'[^a-z0-9]', '', s)
+
+
 def seed_database_if_empty(force: bool = False):
     """
     Populates or updates all campuses and rooms across all faculties.
+    Cleans up any legacy un-normalized duplicate room slugs.
     """
     with get_connection() as conn:
         cursor = conn.cursor()
         now_iso = datetime.now(timezone.utc).isoformat()
+        
+        # Clean up legacy un-normalized crawled slugs
+        cursor.execute("""
+            DELETE FROM rooms
+            WHERE id LIKE 'hoersaal-%'
+               OR id LIKE 'seminarraum-%'
+               OR id LIKE 'pc-raum-%'
+               OR id LIKE 'pc-unterrichtsraum-%'
+        """)
         
         # 1. Insert/Update Campuses
         for c in DEFAULT_CAMPUSES:
@@ -310,6 +330,7 @@ def seed_database_if_empty(force: bool = False):
         # 2. Insert/Update Rooms for all Campuses
         for campus_id, rooms in SEEDED_ROOMS_MAP.items():
             for r in rooms:
+                canonical_id = normalize_room_id(r["id"])
                 cursor.execute("""
                     INSERT INTO rooms (id, campus_id, label, category, query_term, display_order, last_synced)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -319,7 +340,7 @@ def seed_database_if_empty(force: bool = False):
                         query_term = excluded.query_term,
                         display_order = excluded.display_order,
                         last_synced = excluded.last_synced
-                """, (r["id"], campus_id, r["label"], r["category"], r["query_term"], r["display_order"], now_iso))
+                """, (canonical_id, campus_id, r["label"], r["category"], r["query_term"], r["display_order"], now_iso))
                 
         conn.commit()
 
@@ -424,6 +445,7 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
                     query_term = "Audimax"
                     display_order = 1
                 
+                canonical_id = normalize_room_id(room_slug)
                 cursor.execute("""
                     INSERT INTO rooms (id, campus_id, label, category, query_term, display_order, last_synced)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -431,8 +453,9 @@ async def sync_rooms_from_directory() -> Dict[str, Any]:
                         label = excluded.label,
                         category = excluded.category,
                         query_term = excluded.query_term,
+                        display_order = excluded.display_order,
                         last_synced = excluded.last_synced
-                """, (room_slug, campus_slug, label, category, query_term, display_order, now_iso))
+                """, (canonical_id, campus_slug, label, category, query_term, display_order, now_iso))
                 discovered_count += 1
             
             conn.commit()
