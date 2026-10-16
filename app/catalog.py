@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CAMPUSES = [
     {
         "id": "w29",
-        "name": "Währinger Straße 29 (Computer Science / Media)",
+        "name": "Währinger Straße 29 (Computer Science & Media)",
         "address": "Währinger Straße 29, 1090 Wien",
         "query_prefix": "Währinger Straße 29",
         "spl_codes": "spl5,spl22",
@@ -37,7 +37,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "campus",
-        "name": "Spitalgasse 2 (Cultural Studies / Languages)",
+        "name": "Spitalgasse 2 (Cultural Studies & Languages)",
         "address": "Spitalgasse 2, 1090 Wien",
         "query_prefix": "Spitalgasse 2 Hof",
         "spl_codes": "spl3,spl6,spl12",
@@ -45,7 +45,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "omp",
-        "name": "Oskar-Morgenstern-Platz 1 (Mathematics / Economics)",
+        "name": "Oskar-Morgenstern-Platz 1 (Mathematics & Economics)",
         "address": "Oskar-Morgenstern-Platz 1, 1090 Wien",
         "query_prefix": "Oskar-Morgenstern-Platz 1",
         "spl_codes": "spl25,spl4",
@@ -61,7 +61,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "nig",
-        "name": "Universitätsstraße 7 (Social Sciences / Philosophy)",
+        "name": "Universitätsstraße 7 (Social Sciences & Philosophy)",
         "address": "Universitätsstraße 7, 1010 Wien",
         "query_prefix": "Universitätsstraße 7",
         "spl_codes": "spl2,spl20,spl21,spl24",
@@ -69,7 +69,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "ubb",
-        "name": "Djerassiplatz 1 (Life Sciences / Biology)",
+        "name": "Djerassiplatz 1 (Life Sciences & Biology)",
         "address": "Djerassiplatz 1, 1030 Wien",
         "query_prefix": "Djerassiplatz 1",
         "spl_codes": "spl30,spl31",
@@ -77,7 +77,7 @@ DEFAULT_CAMPUSES = [
     },
     {
         "id": "uza2",
-        "name": "Josef-Holaubek-Platz 2 (Pharmacy / Geosciences)",
+        "name": "Josef-Holaubek-Platz 2 (Pharmacy & Geosciences)",
         "address": "Josef-Holaubek-Platz 2, 1090 Wien",
         "query_prefix": "Josef-Holaubek-Platz 2",
         "spl_codes": "spl28,spl29",
